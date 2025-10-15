@@ -12,18 +12,11 @@
 
 template<class T> struct FenwickTree {
   int N; vector<T> bit;
-  FenwickTree(int _N) { 
-    N = _N; 
-    bit.resize(N); 
-  }
+  FenwickTree(int _N) { N = _N; bit.resize(N); }
   void add(int p, T x) { 
-    for (++p; p <= N; p += p&-p) {
-      bit[p-1] += x; 
-    }
+    for (++p; p <= N; p += p&-p) bit[p-1] += x; 
   }
-  T sum(int l, int r) { 
-    return sum(r+1)-sum(l); 
-  }
+  T sum(int l, int r) { return sum(r+1)-sum(l); }
   T sum(int r) { 
     T res = 0; 
     for(; r; r -= r&-r) res += bit[r-1]; 
@@ -34,9 +27,8 @@ template<class T> struct FenwickTree {
     int pos = 0;
     for (int pw = 1<<25; pw; pw >>= 1) {
       int npos = pos+pw;
-      if (npos <= N && bit[npos-1] < sum) {
+      if (npos <= N && bit[npos-1] < sum) 
         pos = npos, sum -= bit[pos-1];
-      }
     }
     return pos;
   }
