@@ -8,7 +8,7 @@
  * Verification: SPOJ Fenwick, https://cses.fi/problemset/task/1648/
  */
 
-template <class T> struct SegTree {
+template<class T> struct SegTree {
   const T ID{};
   T cmb(T a, T b) { return a + b; }
   int n; vector<T> seg;
@@ -16,9 +16,7 @@ template <class T> struct SegTree {
     for (n = 1; n < _n; ) n *= 2;
     seg.assign(2 * n, ID);
   }
-  void pull(int p) { 
-    seg[p] = cmb(seg[2 * p], seg[2 * p + 1]); 
-  }
+  void pull(int p) { seg[p] = cmb(seg[2 * p], seg[2 * p + 1]); }
   void update(int p, T val) { // set val at position p
     seg[p += n] = val;
     for (p /= 2; p; p /= 2) pull(p);
