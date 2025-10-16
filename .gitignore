@@ -42,6 +42,8 @@
 
 # folder
 build
+.testcases
+.vscode
 
 # temp file 
 *.tmp
