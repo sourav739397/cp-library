@@ -3,7 +3,7 @@
  	* $0\ldots N-1$ and root $R$ using binary jumping. 
  * Time: O(N\log N) build, O(\log N) query
  * Memory: O(N\log N)
- * Source: Benq, cp-algorithm, 
+ * Source: Benq, cp-algorithm
  * Verification: https://judge.yosupo.jp/problem/lca
 **/
 
@@ -22,7 +22,7 @@ struct LCA {
     adj[u].push_back(v);
     adj[v].push_back(u); 
   }
-	void gen(int R = 0) { par[R][0] = R; dfs(R); }
+	void build(int R = 0) { par[R][0] = R; dfs(R); }
 	void dfs(int u = 0) {
     for (int j = 1; j < LOG; ++j) {
       par[u][j] = par[par[u][j-1]][j-1];
@@ -50,7 +50,7 @@ struct LCA {
 		}
 		return par[u][0];
 	}
-	int dist(int u, int v) { // # edges on path
+	int dist(int u, int v) {
 		return depth[u] + depth[v] - 2*depth[lca(u, v)]; 
   }
 };
