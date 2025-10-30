@@ -39,6 +39,14 @@ The bash script handles:
 For more info, check out the [Codeforces blog](https://codeforces.com/blog/entry/142978) and [GitHub repo](https://github.com/sourav739397/Competitive-Programming-Automation).
 
 
+## Sources
+
+This library is built from:
+- [KACTL](https://github.com/kth-competitive-programming/kactl) - KTH's ICPC reference
+- [Benjamin Qi's CP Notebook](https://github.com/bqi343/cp-notebook)
+- [Competitive Programmer's Handbook](https://cses.fi/book/) (CPH)
+
+
 ## From KACTL
 
 This repo hosts KACTL, KTH's ICPC team reference document. It consists of 25 pages of copy-pasteable code, for use in ICPC-style programming competitions.
@@ -64,3 +72,22 @@ To build KACTL, type `make kactl` (or `make fast`) on a *NIX machine -- this wil
 kactl.pdf is to be kept to 25 pages + cover page. Occasionally the generated kactl.pdf is committed to the repo for convenience, but not too often because it makes git operations slower.
 
 Before printing KACTL for an official contest, you may want to locally change the arguments to `\team`, `\contest`, etc. in build/kactl.tex to something more fitting. You may also enable colored syntax highlighting in the same file.
+
+
+## Contributing
+
+Found a bug or want to add something? Open an issue or PR!
+
+## License
+
+As usual for competitive programming, the licensing situation is a bit unclear. Many source files are marked with license (we try to go with **CC0**), but many also aren't. Presumably good will is to be assumed from other authors, though, and in many cases permission should not be needed since the code is not distributed. To help trace things back, sources and authors are noted in source files.
+
+## Author
+
+**Sourav** - [@sourav739397](https://github.com/sourav739397)
+
+Codeforces: [-739397](https://codeforces.com/profile/-739397)
+
+---
+
+⭐ Star this repo if it helps you in contests!
