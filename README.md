@@ -23,4 +23,6 @@ content/
 ├── various/            # DP tricks, other useful stuff
 ├── test-session/       # LaTeX source for test session PDF
 └── tex/                # LaTeX source for 25-page reference PDF
+run.sh                  # Automation script for fetch, test, and stress testing
+kactl.pdf               # Generated 25-page algorithm reference
 ```
