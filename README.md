@@ -24,5 +24,7 @@ content/
 ├── test-session/       # LaTeX source for test session PDF
 └── tex/                # LaTeX source for 25-page reference PDF
 run.sh                  # Automation script for fetch, test, and stress testing
+Makefile                # Build script for generating PDFs
 kactl.pdf               # Generated 25-page algorithm reference
+test-session.pdf        # Generated test session PDF
 ```
