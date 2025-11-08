@@ -1,8 +1,9 @@
 /**
  * Description: 1D range increment and sum query.
- * Source: USACO Counting Haybales
- * Verification: SPOJ Horrible, USACO Counting Haybales
+ * Source: Benq
+ * Verification: https://cses.fi/problemset/task/1651/
  * Time: O(\log N)
+ * Usage: LazySeg<int64_t, 1<<20> T; T.update(l, r, val);
  */
 
 template<class T, int SZ>struct LazySeg {
