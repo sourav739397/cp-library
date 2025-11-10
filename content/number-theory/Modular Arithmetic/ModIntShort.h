@@ -2,29 +2,35 @@
  * Description: Modular arithmetic. Assumes $MOD$ is prime.
  * Source: KACTL
  * Verification: https://open.kattis.com/problems/modulararithmetic
- * Usage: Z a = MOD+5; inv(a); // 400000003
-*/
+ * Usage: mi a = MOD+5; inv(a); // 400000003
+ */
 
-struct Z {
+template<int MOD = (int)1E9+7> struct mint {
   int v;
-  static const int MOD = 1E9 + 7;
   explicit operator int() const { return v; }
-  Z() : v(0) {}
-  Z(int64_t _v) : v(int(_v % MOD)) { v += (v < 0) * MOD; }
-  Z &operator+=(Z o) {
+  mint() : v(0) {}
+  mint(int64_t _v) : v(int(_v % MOD)) { v += (v < 0) * MOD; }
+  mint &operator+=(mint o) {
     if ((v += o.v) >= MOD) v -= MOD;
-    return *this; }
-  Z &operator-=(Z o) { 
+    return *this;
+  }
+  mint &operator-=(mint o) {
     if ((v -= o.v) < 0) v += MOD;
-    return *this; }
-  Z &operator*=(Z o) {
+    return *this;
+  }
+  mint &operator*=(mint o) {
     v = int((int64_t)v * o.v % MOD);
-    return *this; }
-  friend Z pow(Z a, int64_t p) {
-    return p == 0 ? 1 : pow(a*a, p/2)*(p&1 ? a:1); }
-  friend Z inv(Z a) {
-    return pow(a, MOD - 2); }
-  friend Z operator+(Z a, Z b) { return a += b; }
-  friend Z operator-(Z a, Z b) { return a -= b; }
-  friend Z operator*(Z a, Z b) { return a *= b; }
+    return *this;
+  }
+  friend mint pow(mint a, int64_t p) {
+    assert(p >= 0);
+    return p==0? 1:pow(a*a, p/2)*(p&1? a:1);
+  }
+  friend mint inv(mint a) {
+    assert(a.v != 0);
+    return pow(a, MOD - 2);
+  }
+  friend mint operator+(mint a, mint b) { return a += b; }
+  friend mint operator-(mint a, mint b) { return a -= b; }
+  friend mint operator*(mint a, mint b) { return a *= b; }
 };
