@@ -2,11 +2,12 @@
  * Description: Modular arithmetic. Assumes $MOD$ is prime.
  * Source: KACTL
  * Verification: https://open.kattis.com/problems/modulararithmetic
- * Usage: mi a = MOD+5; inv(a); // 400000003
+ * Usage: mint a = MOD+5; inv(a); // 400000003
  */
 
-template<int MOD = (int)1E9+7> struct mint {
+struct mint {
   int v;
+  static const int MOD = 1E9 + 7;
   explicit operator int() const { return v; }
   mint() : v(0) {}
   mint(int64_t _v) : v(int(_v % MOD)) { v += (v < 0) * MOD; }
