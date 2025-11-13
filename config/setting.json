@@ -1,0 +1,32 @@
+{
+    "workbench.startupEditor": "none", 
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontLigatures": true,
+    "window.titleBarStyle": "native",
+    "window.menuBarVisibility": "toggle",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.editor.showTabs": "none",
+    "workbench.panel.showLabels": false,
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Visual Studio 2017 Dark - C++",
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "C_Cpp.default.cppStandard": "gnu++23",
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "explorer.confirmDelete": false,
+    "makefile.configureOnOpen": true,
+    "editor.fontSize": 15,
+    "workbench.activityBar.location": "bottom",
+    "window.customTitleBarVisibility": "never",
+    "git.autofetch": true,
+    "editor.stickyScroll.enabled": false,
+    "bashBeautify.tabSize": 2,
+    "[shellscript]": {
+      "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
+    },
+    "terminal.integrated.cursorStyle": "underline",
+    "terminal.integrated.fontSize": 15
+,
+  "material-code.primaryColor": "#4C3D50"
+}

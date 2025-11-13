@@ -1,0 +1,63 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "alt+r", // test solution
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "./run.sh --cp \"${fileBasename}\"\n"
+    }
+  },
+  {
+    "key": "alt+d", // test solutio with debug 
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "./run.sh --cp -d \"${fileBasename}\"\n"
+    }
+  },
+  {
+    "key": "alt+f", // fetch testcase
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "./run.sh --parse \"${fileBasename}\"\n"
+    }
+  },
+  {
+    "key": "alt+c", // run file
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "./run.sh \"${fileBasename}\" -d\n"
+    }
+  },
+  {
+    "key": "alt+a", // run file without compile(c, c++)
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "./run.sh --add \"${fileBasename}\"\n"
+    }
+  },
+  {
+    "key": "alt+x", // run file without compile(c, c++)
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "clear\n"
+    }
+  },
+  {
+    "key": "alt+1",
+    "command": "workbench.action.focusFirstEditorGroup"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "-workbench.action.focusFirstEditorGroup"
+  },
+  {
+    "key": "alt+2",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  }
+]
