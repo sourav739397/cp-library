@@ -13,9 +13,7 @@ template<int SZ> struct Sieve {
 		for (int i = 4; i < SZ; i += 2) is_prime[i] = 0;
 		for (int i = 3; i*i < SZ; i += 2) if (is_prime[i])
 			for (int j = i*i; j < SZ; j += i*2) is_prime[j] = 0;
-		for (int i = 0; i < SZ; i++) {
-      if (is_prime[i]) primes.push_back(i);
-    }
+		for (int i = 0; i < SZ; i++) if (is_prime[i]) primes.push_back(i);
 	}
 	// array<int, SZ> spf{} // smallest prime that divides
 	// Sieve() { // above is faster

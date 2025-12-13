@@ -22,24 +22,28 @@ template<class T> vector<pair<T,int>> factor(T x) {
  * is O(log n).
  * Euler's theorem: a^{\phi(p)}\equiv 1 (mod p), gcd(a,p)=1
  */
-ll phi(ll x) {
-	each(a,factor(x)) x -= x/a.f;
+template<class T> T phi(T x) {
+	for (auto& [pri, _]: factor(x)) x -= x / pri;
 	return x;
 }
-template<class T> void tour(vector<pair<T,int>>& v, 
-	vector<T>& V, int ind, T cur) {
-		if (ind == sz(v)) V.pb(cur);
-		else {
-			T mul = 1;
-			F0R(i,v[ind].s+1) {
-				tour(v,V,ind+1,cur*mul);
-				mul *= v[ind].f;
-			}
-		}
-	}
-template<class T> vector<T> getDivi(T x) {
-	auto v = factor(x);
-	vector<T> V; tour(v,V,0,(T)1); sort(all(V));
-	return V;
+
+template<class T> void tour(vector<pair<T, int>> &v, 
+vector<T> &V, int ind, T cur) {
+  if (ind == (int)size(v)) V.push_back(cur);
+  else {
+    T mul = 1;
+    for (int i = 0; i <= v[ind].second; i++) {
+      tour(v, V, ind + 1, cur * mul);
+      mul *= v[ind].first;
+    }
+  }
+}
+
+template<class T> vector<T> getDiv(T x) {
+  auto v = factor(x);
+  vector<T> V;
+  tour(v, V, 0, (T)1);
+  ranges::sort(V);
+  return V;
 }
 }
