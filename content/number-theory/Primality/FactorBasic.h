@@ -6,16 +6,17 @@
  */
 
 inline namespace factorBasic {
-template<class T> vector<pair<T,int>> factor(T x) { 
-	vector<pair<T,int>> primes;
+template<class T> vector<pair<T, int>> factor(T x) { 
+	vector<pair<T, int>> primes;
 	for (T i = 2; i*i <= x; ++i) if (x % i == 0) {
 		int t = 0;
 		while (x % i == 0) x /= i, t++;
-		primes.pb({i,t});
+		primes.push_back({i, t});
 	}
-	if (x > 1) primes.push_back({x,1});
+	if (x > 1) primes.push_back({x, 1});
 	return primes;
 }
+
 /* Note:
  * number of operations needed s.t.
  *				  phi(phi(...phi(n)...))=1
@@ -23,7 +24,7 @@ template<class T> vector<pair<T,int>> factor(T x) {
  * Euler's theorem: a^{\phi(p)}\equiv 1 (mod p), gcd(a,p)=1
  */
 template<class T> T phi(T x) {
-	for (auto& [pri, _]: factor(x)) x -= x / pri;
+	for (auto& [p, exp]: factor(x)) x -= x/p;
 	return x;
 }
 

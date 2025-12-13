@@ -25,7 +25,7 @@ void factor_rec(ul n, map<ul, int> &cnt) {
   if (n == 1) return;
   if (prime(n)) { ++cnt[n]; return; }
   ul u = pollard(n);
-  factor_rec(u, cnt), factor_rec(n / u, cnt);
+  factor_rec(u, cnt), factor_rec(n/u, cnt);
 }
 
 vector<pair<ul, int>> factor(ul n) {
