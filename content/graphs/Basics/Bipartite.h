@@ -1,7 +1,8 @@
 /**
  * Description: Checks if an undirected graph is bipartite.
- * Colors nodes with 0/1. If not bipartite, returns false.
- * Source: KACTL style
+  * Colors nodes with 0/1. If not bipartite, returns false.
+ * Time: O(N + M)
+ * Source: own
  * Verification: https://www.spoj.com/problems/BUGLIFE/
  */
 
@@ -26,7 +27,7 @@ struct Bipartite {
       while (!todo.empty()) {
         int u = todo.front(); todo.pop();
         for (auto& v: adj[u]) {
-          if (color[v] == -1) color[v] = 1^color[u], todo.push(v);
+          if (color[v]) color[v] = 1^color[u]; todo.push(v);
           if (color[v] == color[u]) return false;
         }
       }
