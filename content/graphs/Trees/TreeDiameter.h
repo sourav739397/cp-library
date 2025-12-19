@@ -32,7 +32,7 @@ struct TreeDiameter {
       if (dist[i] > dist[dia[1]]) dia[1] = i;
     }
     diaLen = dist[dia[1]];
-    // center vertex of dia[0] -> dia[1]
+    /// center vertex of dia[0] -> dia[1]
     // int cen = dia[1]; 
     // for (int i = 0; i < diaLen/2; ++i) cen = par[cen];
     // center = {cen}; 

@@ -1,0 +1,23 @@
+[
+  {
+    "key": "alt+b", // build
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "./compile.sh ${fileBasenameNoExtension} \n"
+    }
+  },
+  {
+    "key": "alt+d", // file input/output
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "./compile.sh ${fileBasenameNoExtension} && ./${fileBasenameNoExtension} < input.txt > output.txt\n"
+    }
+  },
+  {
+    "key": "alt+d", // manual input
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "./compile.sh ${fileBasenameNoExtension} && ./${fileBasenameNoExtension}\n"
+    }
+  }
+]
