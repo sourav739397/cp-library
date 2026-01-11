@@ -7,13 +7,12 @@
  */
 
 struct Bipartite {
-  int SZ;
+  int N;
   vector<int> color;
   vector<vector<int>> adj;
-  Bipartite(int _SZ) {
-    SZ = _SZ;
-    adj.resize(SZ);
-    color.resize(SZ);
+  Bipartite(int _N) {
+    N = _N;
+    adj.resize(N); color.resize(N);
   }
   void ae(int u, int v) {
     adj[u].push_back(v);
@@ -21,14 +20,14 @@ struct Bipartite {
   }
   bool check() {
     queue<int> todo;
-    for (int src = 0; src < SZ; src++) {
+    for (int src = 0; src < N; src++) {
       if (color[src]) continue;
       color[src] = 1; todo.push(src);
       while (!todo.empty()) {
         int u = todo.front(); todo.pop();
-        for (auto& v: adj[u]) {
+        for (auto &v: adj[u]) {
           if (color[v] == color[u]) return false;
-          if (!color[v]) color[v] = 3-color[u], todo.push(v);
+          if (!color[v]) color[v] = 3 - color[u], todo.push(v);
         }
       }
     }
