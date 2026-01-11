@@ -6,7 +6,7 @@
  * Verification: *
  */
 
-#include "../DSU/DSU.h"
+#include "DSU.h"
 
 template<class T> T Kruskal(int N, vector<array<T, 3>> eg) {
   ranges::sort(eg);
