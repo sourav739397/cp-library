@@ -4,7 +4,7 @@
   * in same component if both $a\to b$ and $b\to a$ exist.
  * Time: O(N+M)
  * Source: Wikipedia
- * Verification: https://codeforces.com/contest/427/problem/C
+ * Verification: https://judge.yosupo.jp/problem/scc 
  */
 
 struct SCC {
