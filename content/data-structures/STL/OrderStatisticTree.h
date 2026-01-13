@@ -9,13 +9,17 @@
 
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
-template<class T> using Tree = tree<T, null_type, less<T>, 
+template<class T> using IndexedSet = tree<T, null_type, less<T>, 
   rb_tree_tag, tree_order_statistics_node_update>; 
 #define ook order_of_key // position of the given element
 #define fbo find_by_order // return an iterator
-
-int atMost(Tree<pair<int, int>>& T, int r) { 
-	return T.order_of_key({r,MOD}); 
+// Number of element <= k
+int atMost(IndexedSet<pair<int, int>>& T, int k) {
+	return T.order_of_key({k, INT_MAX}); 
+}
+// Number of element grater >= k
+int atLeast(IndexedSet<pair<int, int>>& T, int k) {
+  return T.size() - T.order_of_key({k, INT_MIN});
 }
 int getSum(Tree<pair<int, int>>& T, int l, int r) { 
 	return atMost(T,r)-atMost(T,l-1); 
