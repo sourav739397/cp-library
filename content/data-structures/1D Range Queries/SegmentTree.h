@@ -16,12 +16,11 @@ template<class T> struct SegmentTree {
     while (N < _N) N *= 2;
     seg.assign(2*N, ID);
   }
-  void pull(int p) { 
-    seg[p] = cmb(seg[2*p], seg[2*p+1]); 
-  }
   void update(int p, T val) { // set val at position p
     seg[p += N] = val;
-    for (p /= 2; p > 0; p /= 2) pull(p);
+    for (p /= 2; p > 0; p /= 2) {
+      seg[p] = cmb(seg[2*p], seg[2*p+1]); 
+    }
   }
   T query(int l, int r) { // zero-indexed, inclusive
     T lf = ID, rf = ID;
