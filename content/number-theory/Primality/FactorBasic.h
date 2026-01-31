@@ -6,15 +6,15 @@
  */
 
 inline namespace factorBasic {
-template<class T> vector<pair<T, int>> factor(T x) { 
-	vector<pair<T, int>> primes;
-	for (T i = 2; i*i <= x; ++i) if (x % i == 0) {
-		int t = 0;
-		while (x % i == 0) x /= i, t++;
-		primes.push_back({i, t});
-	}
-	if (x > 1) primes.push_back({x, 1});
-	return primes;
+template<class T> vector<pair<T, int>> factor(T x) {
+  vector<pair<T, int>> primes;
+  for (T i = 2; i*i <= x; ++i) if (x % i == 0) {
+    int t = 0;
+    while (x % i == 0) x /= i, t++;
+    primes.push_back({i, t});
+  }
+  if (x > 1) primes.push_back({x, 1});
+  return primes;
 }
 
 /* Note:
