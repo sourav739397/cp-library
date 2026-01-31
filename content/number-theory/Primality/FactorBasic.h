@@ -51,9 +51,9 @@ template<class T> vector<T> getDiv(T x) {
 template<class T> vector<T> getDiv(T x) {
   vector<T> V;
   for (T i = 1; i*i <= x; ++i) if (x % i == 0) {
-		V.push_back(i);
+    V.push_back(i);
     if (x / i != i) V.push_back(x / i);
-	}
+  }
   ranges::sort(V);
   return V;
 }
