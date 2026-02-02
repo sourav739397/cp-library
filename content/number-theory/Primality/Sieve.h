@@ -1,26 +1,26 @@
 /**
- * Description: Tests primality up to $SZ$. Runs faster if only
+ * Description: Tests primality up to $N$. Runs faster if only
  	* odd indices are stored.
- * Time: O(SZ\log\log SZ) or O(SZ)
+ * Time: O(N\log\log N) or O(N)
  * Source: KACTL 
  * Verification: https://open.kattis.com/problems/primesieve
  */
 
-template<int SZ> struct Sieve { 
-	bitset<SZ> is_prime; vector<int> primes;
+template<int N> struct Sieve { 
+	bitset<N> is_prime; vector<int> primes;
 	Sieve() {
 		is_prime.set(); is_prime[0] = is_prime[1] = 0;
-		for (int i = 4; i < SZ; i += 2) is_prime[i] = 0;
-		for (int i = 3; i*i < SZ; i += 2) if (is_prime[i])
-			for (int j = i*i; j < SZ; j += i*2) is_prime[j] = 0;
-		for (int i = 0; i < SZ; i++) if (is_prime[i]) primes.push_back(i);
+		for (int i = 4; i < N; i += 2) is_prime[i] = 0;
+		for (int i = 3; i*i < N; i += 2) if (is_prime[i])
+			for (int j = i*i; j < N; j += i*2) is_prime[j] = 0;
+		for (int i = 0; i < N; i++) if (is_prime[i]) primes.push_back(i);
 	}
-	// array<int, SZ> spf{} // smallest prime that divides
+	// array<int, N> spf{} // smallest prime that divides
 	// Sieve() { // above is faster
-	// 	for (int i = 2; i < SZ; i++) { 
+	// 	for (int i = 2; i < N; i++) { 
 	// 		if (spf[i] == 0) spf[i] = i, primes.push_back(i); 
 	// 		for (int p: primes) {
-	// 			if (p > spf[i] || i*p >= SZ) break;
+	// 			if (p > spf[i] || i*p >= N) break;
 	// 			spf[i*p] = p;
 	// 		}
 	// 	}
