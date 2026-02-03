@@ -19,33 +19,44 @@
 #include "SCCK.h"
 
 struct TwoSAT {
-	int N = 0; vpi edges;
+	int N = 0; 
+  vector<pair<int, int>> edges;
 	void init(int _N) { N = _N; }
 	int addVar() { return N++; }
 	void either(int x, int y) { 
-		x = max(2*x,-1-2*x), y = max(2*y,-1-2*y);
-		edges.eb(x,y); }
-	void implies(int x, int y) { either(~x,y); }
-	void must(int x) { either(x,x); }
-	void atMostOne(const vi& li) {
-		if (sz(li) <= 1) return;
+		x = max(2*x, -1-2*x), y = max(2*y, -1-2*y);
+		edges.push_back({x, y}); 
+  }
+	void implies(int x, int y) { either(~x, y); }
+	void must(int x) { either(x, x); }
+	void atMostOne(const vector<int>& li) {
+		if (li.size() <= 1) return;
 		int cur = ~li[0];
-		FOR(i,2,sz(li)) {
+		for (int i = 2; i < li.size(); i++) {
 			int next = addVar();
-			either(cur,~li[i]); either(cur,next);
-			either(~li[i],next); cur = ~next;
+			either(cur, ~li[i]); either(cur,next);
+			either(~li[i], next); cur = ~next;
 		}
-		either(cur,~li[1]);
+		either(cur, ~li[1]);
 	}
-	vb solve() {
-		SCC S; S.init(2*N);
-		each(e,edges) S.ae(e.f^1,e.s), S.ae(e.s^1,e.f);
-		S.gen(); reverse(all(S.comps)); // reverse topo order
-		for (int i = 0; i < 2*N; i += 2) 
+	vector<bool> gen() {
+    SCC S(2*N);
+    for (auto& [u, v]: edges) {
+      S.ae(u^1, v);
+      S.ae(v^1, u);
+    }
+		S.gen(); ranges::reverse(S.comps); // reverse topo order
+		for (int i = 0; i < 2*N; i += 2) {
 			if (S.comp[i] == S.comp[i^1]) return {};
-		vi tmp(2*N); each(i,S.comps) if (!tmp[i]) 
-			tmp[i] = 1, tmp[S.comp[i^1]] = -1;
-		vb ans(N); F0R(i,N) ans[i] = tmp[S.comp[2*i]] == 1;
+    }
+		vector<int> tmp(2*N); 
+    for (auto& i: S.comps) if (!tmp[i]) {
+      tmp[i] = 1, tmp[S.comp[i^1]] = -1;
+    }
+		vector<bool> ans(N); 
+    for (int i = 0; i < N; i++) {
+      ans[i] = (tmp[S.comp[2*i]] == 1);
+    } 
 		return ans;
 	}
 };
