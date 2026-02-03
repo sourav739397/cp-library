@@ -3,7 +3,7 @@
     "key": "alt+b", // build
     "command": "workbench.action.terminal.sendSequence",
     "args": {
-      "text": "./compile.sh ${fileBasenameNoExtension} \n"
+      "text": "./compile.sh ${fileBasenameNoExtension}\n"
     }
   },
   {
@@ -14,7 +14,7 @@
     }
   },
   {
-    "key": "alt+d", // manual input
+    "key": "alt+c", // manual input
     "command": "workbench.action.terminal.sendSequence",
     "args": {
       "text": "./compile.sh ${fileBasenameNoExtension} && ./${fileBasenameNoExtension}\n"
