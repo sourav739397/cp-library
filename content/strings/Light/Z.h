@@ -3,22 +3,23 @@
  	* \texttt{s.substr(0,len) == s.substr(i,len)}
  * Time: O(N)
  * Source: http://codeforces.com/blog/entry/3107
- * Verification: POI 12 Template, https://codeforces.com/contest/1137/problem/B
+ * Usage: getPrefix("abcab","uwetrabcerabcab"));
+ * Verification: https://codeforces.com/problemset/problem/126/B
  */
 
-vi z(str s) {
-	int N = sz(s), L = 1, R = 0; s += '#';
-	vi ans(N); ans[0] = N; 
-	FOR(i,1,N) {
-		if (i <= R) ans[i] = min(R-i+1,ans[i-L]);
-		while (s[i+ans[i]] == s[ans[i]]) ++ans[i];
-		if (i+ans[i]-1 > R) L = i, R = i+ans[i]-1;
-	}
-	return ans;
-}
-vi getPrefix(str a, str b) { // find prefixes of a in b
-	vi t = z(a+b); t = vi(sz(a)+all(t)); 
-	each(u,t) ckmin(u,sz(a));
+vector<int> Zfunction(string s){
+  int N = s.size(), L = 1, R = 0; s += '#';
+  vector<int> z(N); z[0] = N;
+  for (int i = 1; i < N; i++) {
+    if (i <= R) z[i] = min(R-i+1, z[i-L]);
+    while (s[i+z[i]] == s[z[i]]) ++z[i];
+    if (i+z[i]-1 > R) L = i, R = i+z[i]-1;
+  }
+  return z;
+} 
+vector<int> getPrefix(string a, string b) { // find prefixes of a in b
+	vector<int> t = Zfunction(a+b); 
+  t = vector<int>(size(a)+begin(t), end(t)); 
+  for (auto& x: t) x = min(x, (int)size(a));
 	return t;
 }
-/// Usage: pr(z("abcababcabcaba"),getPrefix("abcab","uwetrabcerabcab"));
