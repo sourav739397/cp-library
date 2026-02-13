@@ -12,8 +12,7 @@ struct TreeDiameter {
   vector<int> dist, dia;
   vector<vector<int>> adj;
   TreeDiameter(int _N) {
-    N = _N;
-    dia = {0, 0};
+    N = _N; dia = {0, 0};
     adj.resize(N);
     dist.resize(N);
   }
@@ -41,7 +40,7 @@ struct TreeDiameter {
   void dfs(int u, int p = -1) {
     for (auto& v: adj[u]) {
       if (v == p) continue;
-      dist[v] = dist[u] + 1; dfs(v, u); 
+      dist[v] = dist[u]+1; dfs(v, u); 
     }
   }
 };

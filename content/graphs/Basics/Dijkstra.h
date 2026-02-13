@@ -6,19 +6,19 @@
 */
 
 template<class T, bool directed> struct Dijkstra {
-  int SZ;
+  int N;
   vector<T> dist;
   vector<vector<pair<int, T>>> adj;
-  Dijkstra(int _SZ) {
-    SZ = _SZ;
-    adj.resize(SZ);
+  Dijkstra(int _N) {
+    N = _N;
+    adj.resize(N);
   }
   void ae(int u, int v, T w) {
     adj[u].push_back({v, w});
     if (!directed) adj[v].push_back({u, w});
   }
   void gen(int st) {
-    dist.assign(SZ, numeric_limits<T>::max());
+    dist.assign(N, numeric_limits<T>::max());
     priority_queue<pair<T, int>> PQ;
     auto relax = [&](int v, T d) {
       if (dist[v] <= d) return;
