@@ -10,12 +10,12 @@
 struct DSU {
   vector<int> e;
   DSU(int N) { e = vector<int>(N, -1); }
-  int get(int x) { return e[x] < 0 ? x : e[x] = get(e[x]); }
-  bool sameSet(int a, int b) { return get(a) == get(b); }
-  int size(int x) { return -e[get(x)]; }
-  bool unite(int x, int y) { // union by size
-    x = get(x), y = get(y); if (x == y) return false;
-    if (e[x] > e[y]) swap(x, y);
-    e[x] += e[y]; e[y] = x; return true;
+  int get(int u) { return e[u] < 0 ? u : e[u] = get(e[u]); }
+  bool sameSet(int u, int v) { return get(u) == get(v); }
+  int size(int u) { return -e[get(u)]; }
+  bool unite(int u, int v) { // union by size
+    u = get(u), v = get(v); if (u == v) return false;
+    if (e[u] > e[v]) swap(u, v);
+    e[u] += e[v]; e[v] = u; return true;
   }
 };
