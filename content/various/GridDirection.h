@@ -4,7 +4,7 @@
   * 4-directional, 8-directional, diagonal-only, knight moves, 3D etc.
  * Source: Own
  * Verification: Multiple grid problems (BFS/DFS, CF style)
- */
+*/
 
 // Down, Right, Up, Left
 const int dx[4] = {1, 0, -1, 0};

@@ -1,5 +1,5 @@
 /**
- * Description: sorts vertices such that if there exists an edge x->y, then x goes before y
+ * Description: sorts vertices such that if there exists an edge u->v, then u goes before v
  * Source: KACTL
  * Verification: https://open.kattis.com/problems/quantumsuperposition
  */

@@ -31,10 +31,13 @@ struct SCC {
     for (auto &v: radj[u]) if (comp[v] == -1) dfs2(v, id);
   }
   void gen() {
-    for (int u = 0; u < N; u++) if (!vis[u]) dfs(u);
+    for (int u = 0; u < N; u++) {
+      if (!vis[u]) dfs(u);
+    }
     ranges::reverse(todo);
+    int id = 0;
     for (auto &u: todo) if (comp[u] == -1) {
-      dfs2(u, u);
+      dfs2(u, ++id);
       comps.push_back(u);
     }
   }
