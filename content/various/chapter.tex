@@ -28,13 +28,33 @@ When doing DP on intervals: $a[i][j] = \min_{i < k < j}(a[i][k] + a[k][j]) + f(i
 \section{Optimization tricks}
 	\subsection{Bit hacks}
 		\begin{itemize}
-			\item \texttt{x \& -x} is the least bit in \texttt{x}.
+			\item \texttt{x \& -x} is the lowest set bit in \texttt{x}.
 			\item \texttt{for (int x = m; x; ) \{ --x \&= m; ... \}} loops over all subset masks of \texttt{m} (except \texttt{m} itself).
 			\item \texttt{c = x\&-x, r = x+c; (((r\^{}x) >> 2)/c) | r} is the next number after \texttt{x} with the same number of bits set.
 			\item \texttt{ F0R(b,k) F0R(i,1<<K) if (i\&1<<b) D[i] += D[i\^{}(1<<b)]; } computes all sums of subsets.
 		\end{itemize}
+  \subsection{STL Utilities}
+		\begin{itemize}
+			\item \lstinline{ranges::rotate(p, ranges::min_element(p));} Lexicographically smallest cyclic shift.
+			\item \lstinline{next_permutation(v.begin(), v.end());} Next permutation.
+      \item \lstinline{prev_permutation(v.begin(), v.end());} Previous permutation.
+      \item \lstinline{auto [mn, mx] = ranges::minmax(v);} Min and max in one pass.
+      \item \lstinline{ranges::nth_element(v, v.begin()+k);} k-th smallest in $O(n)$.
+      \item \lstinline{ranges::binary_search(v, x);} Check existence in sorted vector.
+      \item \lstinline{ranges::lower_bound(v, x);} First element $>= x$.
+      \item \lstinline{ranges::upper_bound(v, x);} First element $> x$.
+      \item \lstinline{int cnt = ranges::upper_bound(v, R) - ranges::lower_bound(v, L);} Count of elements in range $[L,R]$.
+      \item \lstinline{auto [l,r] = equal_range(v.begin(),v.end(),x);} Range of equal values.
+      \item \lstinline{v.erase(unique(v.begin(),v.end()),v.end());} Remove duplicates (after sort).
+      \item \lstinline{iota(v.begin(),v.end(),0);} Fill with increasing values.
+      \item Prefix sum
+      \begin{lstlisting}
+      inclusive_scan(v.begin(), v.end(), pre.begin()+1,
+        [](auto sum, auto x){ return sum + x; }, 0LL
+      );
+      \end{lstlisting}
+		\end{itemize}
 	\subsection{Pragmas}
-	
 		\begin{itemize}
 			\item \lstinline{#pragma GCC optimize ("Ofast")} will make GCC auto-vectorize for loops and optimizes floating points better (assumes associativity and turns off denormals).
 			\item \lstinline{#pragma GCC target ("avx,avx2")} can double performance of vectorized code, but causes crashes on old machines. Also consider older \lstinline{#pragma GCC target ("sse4")}.
@@ -44,7 +64,7 @@ When doing DP on intervals: $a[i][j] = \min_{i < k < j}(a[i][k] + a[k][j]) + f(i
 	% \kactlimport{BumpAllocator.h}
 	% \kactlimport{SmallPtr.h}
 	% \kactlimport{BumpAllocatorSTL.h}
-	\kactlimport{FastInput.h}
+	% \kactlimport{FastInput.h}
 
 % \section{Other languages}
 	% \kactlimport{Main.java}

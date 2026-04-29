@@ -22,6 +22,19 @@
 
 	The number of divisors of $n$ is at most around 100 for $n < 5e4$, 500 for $n < 1e7$, 2000 for $n < 1e10$, 200\,000 for $n < 1e19$.
 
+	Let $n = \prod_{i} p_i^{e_i}$ be the prime factorization of $n$.
+
+	Number of Divisors: $d(n) = \prod_{i} (e_i + 1)$.
+
+	Sum of Divisors: $\sigma(n) = \prod_{i} \frac{p_i^{e_i+1}-1}{p_i-1}$.	
+
+	Product of Divisors: 
+
+	Case 1: $n$ is a perfect square. Then $\prod_{d|n} d = \sqrt{n} ^ {d(n)}$.	
+
+	Case 2: $n$ is not a perfect square. Then $\prod_{d|n} d = n^{d(n)/2}$.	
+	% Euler's Totient Function: $\phi(n) = n \prod_{i} (1 - \frac{1}{p_i}) = \prod_{i} (p_i^{a_i} - p_i^{a_i-1})$.	
+
 	\textbf{Dirichlet Convolution:} Given a function $f(x)$, let 
 
 	$(f*g)(x)=\sum_{d|x}g(d)f(x/d)$. 
