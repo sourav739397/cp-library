@@ -1,6 +1,6 @@
 /**
  * Description: Given alphabet $[0,k)$ constructs a cyclic string 
- 	* of length $k^n$ that contains every length $n$ string as substr. 
+ 	* of length $k^n$ that contains every length $n$ string as substring. 
  * Source: https://en.wikipedia.org/wiki/De_Bruijn_sequence
  * Verification: https://cses.fi/problemset/task/1692/
  */ 
