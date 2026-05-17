@@ -44,3 +44,13 @@ template<class T> struct SegmentTree {
   //   else return k_th_one(k-seg[lc], rc, m+1, r);
   // }
 };
+
+void solve() {
+  
+}
+
+int32_t main() {
+  cin.tie(0)->sync_with_stdio(0);
+
+  solve();
+}
