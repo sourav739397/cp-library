@@ -27,18 +27,18 @@ template<class T> struct SegmentTree {
 		}
 		return cmb(lf, rf);
 	}
-	int first_at_least(int lo, int val, int ind, int l, int r) { // if seg stores max across range
-		if (r < lo || val > seg[ind]) return -1;
-		if (l == r) return l;
-		int m = (l+r)/2;
-		int res = first_at_least(lo,val,2*ind,l,m); if (res != -1) return res;
-		return first_at_least(lo,val,2*ind+1,m+1,r);
-	}
-	int k_th_one(int k, int ind, int l, int r) { /// first index which sum >= k 
-		if (l == r) return l;
-		int m = (l + r) / 2;
-		int lc = 2*ind, rc = 2*ind+1;
-		if (seg[lc] >= k) return k_th_one(k, lc, l, m);
-		else return k_th_one(k-seg[lc], rc, m+1, r);
-	}
+	// int first_at_least(int lo, int val, int ind, int l, int r) { // if seg stores max across range
+	// 	if (r < lo || val > seg[ind]) return -1;
+	// 	if (l == r) return l;
+	// 	int m = (l+r)/2;
+	// 	int res = first_at_least(lo,val,2*ind,l,m); if (res != -1) return res;
+	// 	return first_at_least(lo,val,2*ind+1,m+1,r);
+	// }
+	// int k_th_one(int k, int ind, int l, int r) { /// first index which sum >= k 
+	// 	if (l == r) return l;
+	// 	int m = (l + r) / 2;
+	// 	int lc = 2*ind, rc = 2*ind+1;
+	// 	if (seg[lc] >= k) return k_th_one(k, lc, l, m);
+	// 	else return k_th_one(k-seg[lc], rc, m+1, r);
+	// }
 };

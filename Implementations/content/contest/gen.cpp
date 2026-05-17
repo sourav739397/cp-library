@@ -7,13 +7,11 @@ using namespace std;
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 // return int in [L,R] inclusive
-int rng_int(int L, int R) { 
-  assert(L <= R); 
-	return uniform_int_distribution<int>(L, R)(rng); 
+int rng_int(int L, int R) { assert(L <= R);
+	return uniform_int_distribution<int>(L, R)(rng);
 }
-int64_t rng_int64(int64_t L, int64_t R) { 
-  assert(L <= R); 
-	return uniform_int_distribution<int64_t>(L, R)(rng);  
+int64_t rng_int64(int64_t L, int64_t R) { assert(L <= R);
+	return uniform_int_distribution<int64_t>(L, R)(rng);
 }
 
 // return double in [L,R] inclusive
@@ -24,8 +22,7 @@ double rng_db(double L, double R) { assert(L <= R);
 // http://cplusplus.com/reference/random/geometric_distribution/geometric_distribution/
 // flip a coin which is heads with probability p until you flip heads
 // mean value of c is 1/p-1
-int rng_geo(double p) { 
-  assert(0 < p && p <= 1); // p large -> closer to 0
+int rng_geo(double p) { assert(0 < p && p <= 1); // p large -> closer to 0
 	return geometric_distribution<int>(p)(rng); 
 }
 
@@ -33,20 +30,20 @@ int rng_geo(double p) {
 
 // shuffle a vector
 template<class T> void randShuffle(vector<T>& v) {
-  shuffle(begin(v), end(v), rng);
+	shuffle(begin(v), end(v), rng);
 }
 
 // generate random permutation of [0,N-1]
-vector<int> randPermutation(int N) { 
-  vector<int> v(N); iota(begin(v), end(v), 0); 
-  randShuffle(v); return v; 
+vector<int> randPermutation(int N) {
+	vector<int> v(N); iota(begin(v), end(v), 0);
+	randShuffle(v); return v;
 }
 
 // random permutation of [0,N-1] with first element 0
 vector<int> randPermutationZero(int N) {
-  vector<int> v(N-1); iota(begin(v), end(v), 1); 
-	randShuffle(v); 
-  v.insert(begin(v), 0); return v; 
+	vector<int> v(N-1); iota(begin(v), end(v), 1);
+	randShuffle(v);
+	v.insert(begin(v), 0); return v;
 }
 
 // shuffle permutation of [0,N-1]
@@ -78,7 +75,7 @@ vector<int> rngDistinctVector(int N, int L, int R) {
 }
 
 // generate random prime in [L,R]
-int randPrime(int L, int R) {
+int randPrime(int L, int R) { assert(L <= R && L >= 2);
 	while(1) {
 		int x = rng_int(L, R);
 		bool bad = 0;
@@ -172,7 +169,7 @@ vpi treeTallHeavyShort(int N, db p) {
 
 int main(int, char* argv[]) {
 	int tc; sscanf(argv[1],"%d",&tc); // test case #
-  rng.seed(tc);
+	rng.seed(tc);
 	// sscanf(argv[2],"%d",&b); // random seed
 	// sscanf(argv[3],"%d",&c); // also random seed
 	
