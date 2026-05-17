@@ -27,7 +27,7 @@ struct Bipartite {
         int u = todo.front(); todo.pop();
         for (auto &v: adj[u]) {
           if (color[v] == color[u]) return false;
-          if (!color[v]) color[v] = 3 - color[u], todo.push(v);
+          if (!color[v]) color[v] = 3-color[u], todo.push(v);
         }
       }
     }
