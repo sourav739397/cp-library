@@ -7,9 +7,6 @@
  * Verification: https://cses.fi/problemset/task/1692/
  */ 
 
-#include "bits/stdc++.h"
-using namespace std;
-
 vector<int> deBruijnSequence(int k, int n) { /// Recursive FKM
 	if (k == 1) return {0};
 	vector<int> seq, aux(n + 1);
