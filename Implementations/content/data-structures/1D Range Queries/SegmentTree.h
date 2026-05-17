@@ -1,6 +1,6 @@
 /**
  * Description: 1D point update and range query where \texttt{cmb} is
-  * any associative operation. \texttt{seg[1]==query(0,N-1)}.
+ 	* any associative operation. \texttt{seg[1]==query(0,N-1)}.
  * Time: O(\log N)
  * Source: KACTL
  * Verification: https://cses.fi/problemset/task/1648/
