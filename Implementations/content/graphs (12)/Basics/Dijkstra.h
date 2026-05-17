@@ -21,7 +21,7 @@ template<class T, bool directed> struct Dijkstra {
     dist.assign(N, numeric_limits<T>::max());
     priority_queue<pair<T, int>> PQ;
     auto relax = [&](int v, T d) {
-      if (dist[v] <= d) return;
+    if (dist[v] <= d) return;
       dist[v] = d; 
       PQ.push({-dist[v], v});
     }; relax(st, 0);
@@ -30,5 +30,5 @@ template<class T, bool directed> struct Dijkstra {
       if (dist[u] < d) continue;
       for (auto& [v, w]: adj[u]) relax(v, w+d);
     }
-  }
+  } 
 };
