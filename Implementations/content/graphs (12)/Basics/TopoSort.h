@@ -5,22 +5,22 @@
  */
 
 struct TopoSort {
-  int N;
-  vector<int> in, res;
-  vector<vector<int>> adj;
-  TopoSort(int _N) {
-    N = _N; in.resize(N); adj.resize(N);
-  }
-  void ae(int u, int v) { 
-    adj[u].push_back(v), ++in[v]; 
-  }
-  bool sort() {
-    queue<int> todo;
-    for (int u = 0; u < N; ++u) if (!in[u]) todo.push(u);
-    while (size(todo)) {
-      int u = todo.front(); todo.pop(); res.push_back(u);
-      for (auto &v: adj[u]) if (!(--in[v])) todo.push(v);
-    }
-    return (int)size(res) == N;
-  }
+	int N;
+	vector<int> in, res;
+	vector<vector<int>> adj;
+	TopoSort(int _N) {
+		N = _N; in.resize(N); adj.resize(N);
+	}
+	void ae(int u, int v) { 
+		adj[u].push_back(v), ++in[v]; 
+	}
+	bool sort() {
+		queue<int> todo;
+	for (int u = 0; u < N; ++u) if (!in[u]) todo.push(u);
+	while (size(todo)) {
+		int u = todo.front(); todo.pop(); res.push_back(u);
+		for (auto &v: adj[u]) if (!(--in[v])) todo.push(v);
+	}
+	return (int)size(res) == N;
+	}
 };
