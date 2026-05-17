@@ -5,15 +5,13 @@
  * https://open.kattis.com/problems/shortestpath3
  */
 
-struct BellmanFord
-{
-	int N;
-	vector<int64_t> dist;
-	vector<vector<int>> adj;
-	vector<array<int, 3>> ed;
-	BellmanFord(int _N)
-	{
-		N = _N;
+struct BellmanFord {
+  int N;
+  vector<int64_t> dist;
+  vector<vector<int>> adj;
+  vector<array<int, 3>> ed;
+  BellmanFord(int _N) {
+    N = _N;
 		adj.resize(N);
 		dist.resize(N, INT64_MAX);
 	}
