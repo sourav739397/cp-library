@@ -22,6 +22,20 @@
 
 	The number of divisors of $n$ is at most around 100 for $n < 5e4$, 500 for $n < 1e7$, 2000 for $n < 1e10$, 200\,000 for $n < 1e19$.
 
+		Let $n = \prod_{i} p_i^{e_i}$ be the prime factorization of $n$.
+
+	Number of Divisors: $d(n) = \prod_{i} (e_i + 1)$.
+
+	Sum of Divisors: $\sigma(n) = \prod_{i} \frac{p_i^{e_i+1}-1}{p_i-1}$.	
+
+	Product of Divisors: 
+
+	Case 1: $n$ is a perfect square. Then $\prod_{d|n} d = \sqrt{n} ^ {d(n)}$.	
+
+	Case 2: $n$ is not a perfect square. Then $\prod_{d|n} d = n^{d(n)/2}$.	
+	
+	Euler's Totient Function: $\phi(n) = n \prod_{i} (1 - \frac{1}{p_i}) = \prod_{i} (p_i^{a_i} - p_i^{a_i-1})$.	
+
 	\textbf{Dirichlet Convolution:} Given a function $f(x)$, let 
 
 	$(f*g)(x)=\sum_{d|x}g(d)f(x/d)$. 
@@ -39,11 +53,9 @@
 	% Nisiyama_Suzune tutorial:
 	% https://codeforces.com/blog/entry/54150
 
-	\begin{comment}
 	Let $s(x)=\sum_{i=1}^x\phi(i).$ Then 
 	$$s(n)=\frac{n(n+1)}{2}-\sum_{i=2}^ns\left(\left\lfloor\frac{n}{i}\right\rfloor\right)$$
 	can be computed in faster than $\Theta(n)$.
-	\end{comment}
 	
 	\kactlimport{Primality/FactorBasic.h}
 	\kactlimport{Primality/Sieve.h}
@@ -54,13 +66,11 @@
 
 \section{Euclidean Algorithm}
 
-\begin{comment}
 	\subsection{Bézout's identity}
 	For $a \neq $, $b \neq 0$, then $d=\gcd(a,b)$ is the smallest positive integer for which there are integer solutions to
 	$$ax+by=d$$
 	If $(x,y)$ is one solution, then all solutions are given by
 	$$\left(x+\frac{kb}{\gcd(a,b)}, y-\frac{ka}{\gcd(a,b)}\right), \quad k\in\mathbb{Z}$$
-\end{comment}
 
 	\kactlimport{Euclid/FracInterval.h}
 	\kactlimport{Euclid/Euclid.h}
