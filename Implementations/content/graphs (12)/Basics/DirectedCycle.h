@@ -4,20 +4,31 @@
  * Verification: VT HSPC 2019 D
  */
 
-template<int SZ> struct DirCyc {
-	vi adj[SZ], stk, cyc; vb inStk, vis; 
-	void dfs(int x) {
-		stk.pb(x); inStk[x] = vis[x] = 1;
-		each(i,adj[x]) {
-			if (inStk[i]) cyc = {find(all(stk),i),end(stk)};
-			else if (!vis[i]) dfs(i); 
-			if (sz(cyc)) return;
-		}
-		stk.pop_back(); inStk[x] = 0;
-	}
-	vi init(int N) {
-		inStk.rsz(N), vis.rsz(N); 
-		F0R(i,N) if (!vis[i] && !sz(cyc)) dfs(i);
-		return cyc;
-	}
+struct DirectedCycle {
+  int N;
+  vector<bool> inStk, vis;
+  vector<int> stk, cyc;
+  vector<vector<int>> adj;
+  DirectedCycle(int _N) {
+    N = _N;
+    adj.resize(N);
+    inStk.resize(N), vis.resize(N);
+  }
+  void ae(int u, int v) { adj[u].push_back(v); }
+  vector<int> gen() {
+    for (int u = 0; u < N; u++) {
+      if (!vis[u] && empty(cyc)) dfs(u);
+    }
+    return cyc;
+  }
+  void dfs(int u) {
+    stk.push_back(u);
+    inStk[u] = vis[u] = 1;
+    for (auto& v: adj[u]) {
+      if (inStk[v]) cyc = {ranges::find(stk, v), end(stk)};
+      else if (!vis[v]) dfs(v);
+      if (size(cyc)) return;
+    }
+    stk.pop_back(); inStk[u] = 0;
+  }
 };
