@@ -16,11 +16,11 @@ struct TopoSort {
 	}
 	bool sort() {
 		queue<int> todo;
-	for (int u = 0; u < N; ++u) if (!in[u]) todo.push(u);
-	while (size(todo)) {
-		int u = todo.front(); todo.pop(); res.push_back(u);
-		for (auto &v: adj[u]) if (!(--in[v])) todo.push(v);
-	}
-	return (int)size(res) == N;
+		for (int u = 0; u < N; ++u) if (!in[u]) todo.push(u);
+		while (size(todo)) {
+			int u = todo.front(); todo.pop(); res.push_back(u);
+			for (auto &v: adj[u]) if (!(--in[v])) todo.push(v);
+		}
+		return (int)size(res) == N;
 	}
 };

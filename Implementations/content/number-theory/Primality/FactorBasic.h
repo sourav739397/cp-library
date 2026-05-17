@@ -43,8 +43,7 @@ template<class T> vector<T> getDiv(T x) {
 	auto v = factor(x);
 	vector<T> V;
 	tour(v, V, 0, (T)1);
-	ranges::sort(V);
-	return V;
+	ranges::sort(V); return V;
 }
 
 template<class T> vector<T> getDiv(T x) {
@@ -53,7 +52,6 @@ template<class T> vector<T> getDiv(T x) {
 		V.push_back(i);
 		if (x/i != i) V.push_back(x/i);
 	}
-	ranges::sort(V);
-	return V;
+	ranges::sort(V); return V;
 }
 }
