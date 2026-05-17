@@ -1,10 +1,15 @@
 /**
- * Description: coordinate compression, get index of x by counting # of elements < x
- * Source: Own
- * Verification: ?
+ * Description: coordinate compression, get index of x by counting
+  * number of element less than x
+ * Source: Benq
+ * Time: O(N \log N)
+ * Verification: https://cses.fi/problemset/task/1145/
  */
 
-template<class T> void nor(vector<T>& v) {
-	sort(all(v)); v.erase(unique(all(v)),end(v)); }
-template<class T> int ind(vector<T>& v, T x) { 
-	return lb(all(v),x)-begin(v); }
+template<class T> void compress(vector<T>& v) {
+	ranges::sort(v);
+  v.erase(unique(v.begin(), v.end()), v.end()); 
+}
+template<class T> int get(vector<T>& v, T x) { 
+	return ranges::lower_bound(v, x) - begin(v);
+}
