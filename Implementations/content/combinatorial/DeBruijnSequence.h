@@ -45,6 +45,12 @@ template<class T> struct SegmentTree {
   // }
 };
 
+vector<int> deBruijnSequence(int k, int n) {
+  if (k == 1) return {0};
+  vector<int> seq, aux(n+1);
+  
+}
+
 void solve() {
   
 }
