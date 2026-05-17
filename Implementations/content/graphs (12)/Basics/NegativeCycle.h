@@ -5,26 +5,26 @@
  */
 
 vector<int> NegativeCycle(int N, vector<array<int, 3>> &ed) {
-	vector<int64_t> dist(N);
-	vector<int> p(N);
-	int x = -1;
-	for (int i = 0; i < N; i++) {
-		x = -1;
-		for (auto &[u, v, w] : ed) {
-			if (dist[v] > dist[u]+w) {
-				dist[v] = dist[u]+w;
-				p[v] = u, x = v;
-			}
-		}
-		if (x == -1) return {};
-	}
+  vector<int64_t> dist(N);
+  vector<int> p(N);
+  int x = -1;
+  for (int i = 0; i < N; i++) {
+    x = -1;
+    for (auto &[u, v, w] : ed) {
+      if (dist[v] > dist[u]+w) {
+        dist[v] = dist[u]+w;
+        p[v] = u, x = v;
+      }
+    }
+    if (x == -1) return {};
+  }
 
-	for (int i = 0; i < N; i++) x = p[x]; // enter cycle
-	vector<int> cyc{x};
-	while (p[cyc.back()] != x) cyc.push_back(p[cyc.back()]);
-	cyc.push_back(x); // complete cycle
-	ranges::reverse(cyc);
-	return cyc;
+  for (int i = 0; i < N; i++) x = p[x]; // enter cycle
+  vector<int> cyc{x};
+  while (p[cyc.back()] != x) cyc.push_back(p[cyc.back()]);
+  cyc.push_back(x); // complete cycle
+  ranges::reverse(cyc);
+  return cyc;
 }
 
 /**
