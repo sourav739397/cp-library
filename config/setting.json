@@ -1,0 +1,17 @@
+{
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontSize": 15,
+  "editor.fontLigatures": true,
+  "window.titleBarStyle": "native",
+  "window.menuBarVisibility": "toggle",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.showTabs": "none",
+  "workbench.panel.showLabels": false,
+  "editor.minimap.enabled": false,
+  "workbench.colorTheme": "Visual Studio 2017 Dark - C++",
+  "files.autoSave": "afterDelay",
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "C_Cpp.default.cppStandard": "gnu++23",
+  "editor.tabSize": 2,
+  "makefile.configureOnOpen": true,
+}

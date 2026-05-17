@@ -1,0 +1,504 @@
+{	
+//------------< templete >------------------------------------------------------------------------------------------
+	"testcase = true": {
+		"prefix": "ff",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"using namespace std;",
+			"",
+			"#ifdef LOCAL",
+			"#include \"debug.h\"",
+			"#else",
+			"#define dbg(...)",
+			"#endif",
+			"",
+			"int32_t main() {",
+			"  cin.tie(0)->sync_with_stdio(0);",
+			"  ",
+			"  int Q; cin >> Q;",
+			"  while (Q--)[&] {",
+			"    ${0}",
+			"  }();",
+			"}"
+		],
+		"description": "testcase = true"
+	},
+	"testcase = false": {
+		"prefix": "ff0",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"using namespace std;",
+			"",
+			"#ifdef LOCAL",
+			"#include \"debug.h\"",
+			"#else",
+			"#define dbg(...)",
+			"#endif",
+			"",
+			"int32_t main() {",
+			"  cin.tie(0)->sync_with_stdio(0);",
+			"  ${0}",
+			"}"
+		],
+		"description": "testcase = false"
+	},
+//--------------< vector & pair >-------------------------------------------------------------------------------------------------------------------------------------------
+
+	"define pair of int": {
+		"prefix": "pi",
+		"body": [
+			"pair<int, int>"
+		],
+		"description": "define pair of int"
+	},
+	"define pair of long long": {
+		"prefix": "pl",
+		"body": [
+			"pair<int64_t, int64_t>"
+		],
+		"description": "define pair of long long"
+	},
+
+
+	"define vector of int": {
+		"prefix": "vi",
+		"body": [
+			"vector<int>"
+		],
+		"description": "define vector of int"
+	},
+	"define vi a(n)": {
+		"prefix": "via",
+		"body": [
+			"vector<int> a(n);",
+			""
+		],
+		"description": "vector<int> a(n)"
+	},
+	"define vector of long long": {
+		"prefix": "vl",
+		"body": [
+			"vector<int64_t>"
+		],
+		"description": "define vector of int"
+	},
+	"input vector of int": {
+	"prefix": "ina",
+	"body": [
+			"for(auto& x: ${1:a}) cin >> x;",
+			""
+		],
+		"description": "input vector of int"
+	},
+	"define vector of pair of int": {
+		"prefix": "vpi",
+		"body": [
+			"vector<pair<int, int>>"
+		],
+		"description": "define vector of int"
+	},
+	"define vector of pair of long long": {
+		"prefix": "vpl",
+		"body": [
+			"vector<pair<int64_t, int64_t>>"
+		],
+		"description": "define vector of int"
+	},
+	"push back": {
+		"prefix": "pb",
+		"body": [
+			"push_back(${1});"
+		],
+		"description": "push back"
+	},
+
+	"define size": {
+		"prefix": "sz",
+		"body": [
+			"${1}.size()"
+		],
+		"description": "size"
+	},
+	"all(x)": {
+		"prefix": "all",
+		"body": [
+			"${1}.begin(), ${1}.end()"
+		],
+		"description": "all(x)"
+	},
+	"rall(x)": {
+		"prefix": "rall",
+		"body": [
+			"${1}.rbegin(), ${1}.rend()"
+		],
+		"description": "rall(x)"
+	},
+	"end of line": {
+		"prefix": "nl",
+		"body": [
+			"\"\\n\""
+		],
+		"description": "end of line"
+	},
+	"space": {
+		"prefix": "sp",
+		"body": [
+			" "
+		],
+		"description": "space"
+	},
+	"sp + nl": {
+		"prefix": "sl",
+		"body": [
+			"\" \\n\"[i == n - 1];"
+		],
+		"description": "sp + nl"
+	},
+	"print YES": {
+		"prefix": "yes",
+		"body": [
+			"cout << \"YES\\n\";"
+		],
+		"description": "print YES"
+	},
+	"print NO": {
+		"prefix": "no",
+		"body": [
+			"cout << \"NO\\n\";"
+		],
+		"description": "print NO"
+	},
+	"print -1": {
+		"prefix": "_1",
+		"body": [
+			"cout << \"-1\\n\";"
+		],
+		"description": "print -1"
+	},
+	"long long": {
+		"prefix": "ll",
+		"body": [
+			"int64_t"
+		],
+		"description": "long long"
+	},
+	"define and input n": {
+		"prefix": "n",
+		"body": [
+			"int n;    cin >> n;",
+			"",
+		],
+		"description": "define and input n"
+	},
+//------------< sorting >----------------------------------------------------------------------------------------------------------------------------------------
+	"sort in accending order": {
+		"prefix": "sor",
+		"body": [
+			"ranges::sort(${1});"
+		],
+		"description": "sort in accending order"
+	},
+	"sort in decending order": {
+		"prefix": "rsor",
+		"body": [
+			"ranges::sort(${1}, greater<>());"
+		],
+		"description": "sort in decending order"
+	},
+//-------------< loops >-------------------------------------------------------------------------------------------------------------
+	"loops 0 -> n": {
+		"prefix": "f0n",
+		"body": [
+			"for (int i = 0; i < n; ++i) "
+		],
+		"description": "loops 0 -> n"
+	},
+	"loops n <- 0": {
+		"prefix": "n0f",
+		"body": [
+			"for (int i = n-1; i >= 0; --i) "
+		],
+		"description": "loops n >- 0"
+	},
+
+	"loop for(i, 0, r)": {
+		"prefix": "f0r",
+		"body": [
+			"for (int ${1:i} = 0; ${1:i}${2: < n}; ${1:i}${3:++}) {",
+			"  ${0}",
+			"}"
+		],
+		"description": "loop for(i, 0, r)"
+	},
+	"each element": {
+		"prefix": "ech",
+		"body": [
+			"for (auto& x: ${1:a}) "
+		],
+		"description": "each element"
+	},
+	"each element 2d": {
+		"prefix": "ech2",
+		"body": [
+			"for (auto& [v, c]: ${1:a}) "
+		],
+		"description": "each element"
+	},
+//-----------< bit mask >------------------------------------------------------------------
+	"number of set bit": {
+		"prefix": "pct",
+		"body": [
+			"__builtin_popcount(${1})"
+		],
+		"description": "number of set bit"
+	},
+//-----------------------------------------Binary Search---------------------------------------------------------------------------------
+	"lower bound": {
+		"prefix": "Lower_bound",
+		"body": [
+			"ranges::lower_bound(${1}, ${2}) - begin(${1});${0}"
+		],
+		"description": "lower bound"
+	},
+	"upper bound": {
+		"prefix": "Upper_bound",
+		"body": [
+			"ranges::upper_bound(${1}, ${2}) - begin(${1});${0}"
+		],
+		"description": "upper bound"
+	},
+
+
+	"find first index such that f is true": {
+        "prefix": "fst",
+        "body": [
+            "template <typename T, typename U>",
+            "T fstTrue(T lo, T hi, U f) {",
+            "  ++hi;",
+            "  assert(lo <= hi);",
+            "  while (lo < hi) {",
+            "      T mid = lo + (hi - lo) / 2;",
+            "      f(mid) ? hi = mid : lo = mid + 1;",
+            "  }",
+            "  return lo;",
+            "}"
+        ],
+        "description": "find first index such that f is true"
+	},
+
+
+	"find last index such that f is true": {
+        "prefix": "lst",
+        "body": [
+            "template <typename T, typename U>",
+            "T lstTrue(T lo, T hi, U f) {",
+            "  --lo;",
+            "  assert(lo <= hi);",
+            "  while (lo < hi) {",
+            "      T mid = lo + (hi - lo + 1) / 2;",
+            "      f(mid) ? lo = mid : hi = mid - 1;",
+            "  }",
+            "  return lo;",
+            "}"
+        ],
+        "description": "find last index such that f is true"
+    },
+
+
+	// int128
+	"class for __128int": {
+  "prefix": "i128",
+  "body": [
+    "struct i128 {",
+    "    __int128 value;",
+    "",
+    "    // Constructors",
+    "    i128() : value(0) {}",
+    "    i128(int x) : value(x) {}",
+    "    i128(long long x) : value(x) {}",
+    "    i128(__int128 x) : value(x) {}",
+    "",
+    "    // GCD",
+    "    static i128 gcd(const i128 &a, const i128 &b) {",
+    "        __int128 x = a.value, y = b.value;",
+    "        while (y != 0) {",
+    "            __int128 temp = y;",
+    "            y = x % y;",
+    "            x = temp;",
+    "        }",
+    "        return i128(x);",
+    "    }",
+    "",
+    "    i128 sqrt() const {",
+    "        if (value < 0) return i128(0); // Handle negative input",
+    "        if (value <= 1) return i128(value); // Handle 0 and 1",
+    "    ",
+    "        __int128 low = 1;",
+    "        __int128 high = value;",
+    "        __int128 result = 0;",
+    "    ",
+    "        while (low <= high) {",
+    "            __int128 mid = low + (high - low) / 2;",
+    "            __int128 quotient = value / mid; // Avoids overflow",
+    "    ",
+    "            if (mid <= quotient) {",
+    "                // mid^2 <= value (mid is candidate)",
+    "                result = mid;",
+    "                low = mid + 1;",
+    "            } else {",
+    "                // mid^2 > value (adjust upper bound)",
+    "                high = mid - 1;",
+    "            }",
+    "        }",
+    "    ",
+    "        return i128(result);",
+    "    }",
+    "    ",
+    "",
+    "    // Convert to string for output",
+    "    string to_string() const {",
+    "        if (value == 0) return \"0\";",
+    "        __int128 tmp = value;",
+    "        bool neg = tmp < 0;",
+    "        if (neg) tmp = -tmp;",
+    "        string res;",
+    "        while (tmp) {",
+    "            res += (char)('0' + tmp % 10);",
+    "            tmp /= 10;",
+    "        }",
+    "        if (neg) res += '-';",
+    "        reverse(res.begin(), res.end());",
+    "        return res;",
+    "    }",
+    "",
+    "    // Convert from string for input",
+    "    static i128 from_string(const string &s) {",
+    "        __int128 res = 0;",
+    "        bool neg = false;",
+    "        size_t i = 0;",
+    "        if (s[0] == '-') {",
+    "            neg = true;",
+    "            i = 1;",
+    "        }",
+    "        for (; i < s.size(); i++) {",
+    "            res = res * 10 + (s[i] - '0');",
+    "        }",
+    "        return neg ? i128(-res) : i128(res);",
+    "    }",
+    "",
+    "    // Operators",
+    "    i128 operator+(const i128 &b) const { return i128(value + b.value); }",
+    "    i128 operator-(const i128 &b) const { return i128(value - b.value); }",
+    "    i128 operator*(const i128 &b) const { return i128(value * b.value); }",
+    "    i128 operator/(const i128 &b) const { return i128(value / b.value); }",
+    "    i128 operator%(const i128 &b) const { return i128(value % b.value); }",
+    "",
+    "    bool operator<(const i128 &b) const { return value < b.value; }",
+    "    bool operator>(const i128 &b) const { return value > b.value; }",
+    "    bool operator<=(const i128 &b) const { return value <= b.value; }",
+    "    bool operator>=(const i128 &b) const { return value >= b.value; }",
+    "    bool operator==(const i128 &b) const { return value == b.value; }",
+    "    bool operator!=(const i128 &b) const { return value != b.value; }",
+    "",
+    "    // Input/Output",
+    "    friend ostream &operator<<(ostream &os, const i128 &b) {",
+    "        return os << b.to_string();",
+    "    }",
+    "",
+    "    // Fix the conversion issue for integers (long long, int, etc.)",
+    "    friend istream &operator>>(istream &is, i128 &b) {",
+    "        string s;",
+    "        is >> s;",
+    "        b = from_string(s);",
+    "        return is;",
+    "    }",
+    "};"
+  ],
+  "description": "class for __128int",
+  
+},
+"create Sieve ": {
+  "prefix": "sve",
+  "body": [
+    "template<int SZ> struct Sieve { ",
+    "    bitset<SZ> is_prime;",
+    "	Sieve() {",
+    "        is_prime.set(); is_prime[0] = is_prime[1] = 0;",
+    "		for (int i = 4; i < SZ; i += 2) is_prime[i] = 0;",
+    "		for (int i = 3; i*i < SZ; i += 2) if (is_prime[i])",
+    "        for (int j = i*i; j < SZ; j += i*2) is_prime[j] = 0;",
+    "	}",
+    "};",
+    "",
+    "constexpr int N = 1E6;",
+    "Sieve<N> S;"
+  ],
+  "description": "create Sieve "
+},
+"sum of digit": {
+  "prefix": "sumofdigit",
+  "body": [
+    "int sumOfdigit(int x) {",
+    "    int sum = 0;",
+    "    while(x) {",
+    "        sum += x % 10;",
+    "        x = x / 10;",
+    "    }",
+    "    return sum;",
+    "}"
+  ],
+  "description": "sum of digit"
+},
+
+//-------------------------------data structure------------------------------------------------------------------------------------------------------------------------------
+	"DSU": {
+		"prefix": "dsu",
+		"body": [
+			"struct DSU {",
+			"    vector<int> e;",
+			"    DSU(int N) { e = vector<int>(N, -1); }",
+			"    int get(int x) { return e[x] < 0 ? x : e[x] = get(e[x]); }",
+			"    bool sameSet(int a, int b) { return get(a) == get(b); }",
+			"    int size(int x) { return -e[get(x)]; }",
+			"    bool unite(int x, int y) {",
+			"        x = get(x), y = get(y); if (x == y) return false;",
+			"        if (e[x] > e[y]) swap(x, y);",
+			"        e[x] += e[y]; e[y] = x; return true;",
+			"    }",
+			"};"
+		],
+		"description": "DSU"
+	},
+
+	"policy based data structure": {
+		"prefix": "pbds",
+		"body": [
+			"#include <ext/pb_ds/assoc_container.hpp>",
+			"using namespace __gnu_pbds;",
+			"template<typename T, typename Compare = less<T>>",
+			"using IndexedSet = tree<T, null_type, Compare, rb_tree_tag, tree_order_statistics_node_update>;"
+		],
+		"description": "policy based data structure"
+	},
+
+//------------------------------custom hashing-----------------
+"custom hashing for unorderedmap": {
+  "prefix": "customhash",
+  "body": [
+    "struct custom_hash {",
+    "    static uint64_t splitmix64(uint64_t x) {",
+    "        x += 0x9e3779b97f4a7c15;",
+    "        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;",
+    "        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;",
+    "        return x ^ (x >> 31);",
+    "    }",
+    "",
+    "    size_t operator()(uint64_t x) const {",
+    "        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();",
+    "        return splitmix64(x + FIXED_RANDOM);",
+    "    }",
+    "};"
+  ],
+  "description": "custom hashing for unorderedmap"
+},
+}
