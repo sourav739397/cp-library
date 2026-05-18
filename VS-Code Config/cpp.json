@@ -1,29 +1,29 @@
 {	
 //------------< templete >------------------------------------------------------------------------------------------
 "cin >> Q": {
-  "prefix": "ff",
-  "body": [
-    "#include <bits/stdc++.h>",
-    "using namespace std;",
-    "",
-    "#ifdef LOCAL",
-    "#include \"debug.h\"",
-    "#else",
-    "#define dbg(...)",
-    "#endif",
-    "",
-    "void solve() {",
-    "  ${0}",
-    "}",
-    "",
-    "int32_t main() {",
-    "  cin.tie(0)->sync_with_stdio(0);",
-    "  ",
-    "  int Q; cin >> Q;",
-    "  while (Q--) { solve(); }",
-    "}"
-  ],
-  "description": "cin >> Q"
+	"prefix": "ff",
+	"body": [
+		"#include <bits/stdc++.h>",
+		"using namespace std;",
+		"",
+		"#ifdef LOCAL",
+		"#include \"debug.h\"",
+		"#else",
+		"#define dbg(...)",
+		"#endif",
+		"",
+		"void solve() {",
+		"	${0}",
+		"}",
+		"",
+		"int32_t main() {",
+		"	cin.tie(0)->sync_with_stdio(0);",
+		"",
+		"	int Q; cin >> Q;",
+		"	while (Q--) { solve(); }",
+		"}"
+	],
+	"description": "cin >> Q"
 },
 "testcase = false": {
 	"prefix": "ff0",
@@ -38,13 +38,13 @@
 		"#endif",
 		"",
 		"void solve() {",
-    "  ${0}",
-    "}",
+		"	${0}",
+		"}",
 		"",
 		"int32_t main() {",
-		"  cin.tie(0)->sync_with_stdio(0);",
+		"	cin.tie(0)->sync_with_stdio(0);",
 		"",
-		"  solve();",
+		"	solve();",
 		"}"
 	],
 	"description": "testcase = false"
@@ -184,7 +184,7 @@
 "define and input n": {
 	"prefix": "n",
 	"body": [
-		"int n;    cin >> n;",
+		"int n; cin >> n;",
 		"",
 	],
 	"description": "define and input n"
@@ -224,7 +224,7 @@
 	"prefix": "f0r",
 	"body": [
 		"for (int ${1:i} = ${2:0}; ${1:i} < ${3:n}; ${1:i}++) {",
-		"  ${0}",
+		"	${0}",
 		"}"
 	],
 	"description": "loop for(i, 0, r)"
@@ -273,12 +273,12 @@
 	"body": [
 		"template <typename T, typename U>",
 		"T fstTrue(T lo, T hi, U f) {",
-		"  ++hi;",
-		"  while (lo < hi) {",
-		"    T mid = lo + (hi-lo) / 2;",
-		"    f(mid) ? hi = mid : lo = mid+1;",
-		"  }",
-		"  return lo;",
+		"	++hi;",
+		"	while (lo < hi) {",
+		"		T mid = lo + (hi-lo) / 2;",
+		"		f(mid) ? hi = mid : lo = mid+1;",
+		"	}",
+		"	return lo;",
 		"}"
 	],
 	"description": "find first index such that f is true"
@@ -290,12 +290,12 @@
 	"body": [
 		"template <typename T, typename U>",
 		"T lstTrue(T lo, T hi, U f) {",
-		"  --lo;",
-		"  while (lo < hi) {",
-		"    T mid = lo + (hi-lo+1) / 2;",
-		"    f(mid) ? lo = mid : hi = mid-1;",
-		"  }",
-		"  return lo;",
+		"	--lo;",
+		"	while (lo < hi) {",
+		"		T mid = lo + (hi-lo+1) / 2;",
+		"		f(mid) ? lo = mid : hi = mid-1;",
+		"	}",
+		"	return lo;",
 		"}"
 	],
 	"description": "find last index such that f is true"
