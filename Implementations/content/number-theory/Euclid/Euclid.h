@@ -1,17 +1,21 @@
 /**
- * Description: Generalized Euclidean algorithm. \texttt{euclid} and 
- 	* \texttt{invGeneral} work for $A,B<2^{62}$. 
+ * Description: Generalized Euclidean algorithm. \texttt{euclid} and
+  * \texttt{invGeneral} work for $A,B<2^{62}$.
  * Source: KACTL
  * Time: O(\log AB)
  * Verification: https://codeforces.com/gym/102411/problem/G
  */
 
-// ceil(a/b)
-// ll cdiv(ll a, ll b) { return a/b+((a^b)>0&&a%b); }
-pl euclid(ll A, ll B) { // For A,B>=0, finds (x,y) s.t.
-	// Ax+By=gcd(A,B), |Ax|,|By|<=AB/gcd(A,B)
-	if (!B) return {1,0};
-	pl p = euclid(B,A%B); return {p.s,p.f-A/B*p.s}; }
-ll invGeneral(ll A, ll B) { // find x in [0,B) such that Ax=1 mod B
-	pl p = euclid(A,B); assert(p.f*A+p.s*B == 1);
-	return p.f+(p.f<0)*B; } // must have gcd(A,B)=1
+// For A,B>=0, finds (x,y) s.t.
+pair<int64_t, int64_t> euclid(int64_t A, int64_t B) {
+  // Ax+By=gcd(A,B), |Ax|,|By|<=AB/gcd(A,B)
+  if (!B) return {1, 0};
+  pair<int64_t, int64_t> p = euclid(B, A%B);
+  return {p.second, p.first - A/B*p.second};
+}
+// find x in [0,B) such that Ax=1 mod B
+int64_t invGeneral(int64_t A, int64_t B) {
+  pair<int64_t, int64_t> p = euclid(A, B);
+  assert(p.first*A + p.second*B == 1);
+  return p.first + (p.first<0)*B;
+} // must have gcd(A,B)=1

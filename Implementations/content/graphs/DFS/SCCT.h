@@ -10,24 +10,34 @@
  */
 
 struct SCC {
-	int N, ti = 0; V<vi> adj;
-	vi disc, comp, stk, comps;
-	void init(int _N){ N = _N, adj.rsz(N);
-		disc.rsz(N), comp.rsz(N,-1);}
-	void ae(int x, int y) { adj[x].pb(y); }
-	int dfs(int x) {
-		int low = disc[x] = ++ti; stk.pb(x);
-		each(y,adj[x]) if (comp[y] == -1) // comp[y] == -1, 
-			ckmin(low,disc[y]?:dfs(y));  // disc[y] != 0 -> in stack
-		if (low == disc[x]) { // make new SCC
-			// pop off stack until you find x
-			comps.pb(x); for (int y = -1; y != x;) 
-				comp[y = stk.bk] = x, stk.pop_back();
+	int N, ti = 0;
+  vector<vector<int>> adj;
+	vector<int> disc, comp, stk, comps;
+	SCC(int _N){ 
+    N = _N, 
+    adj.resize(N);
+		disc.resize(N), comp.resize(N, -1);
+  }
+	void ae(int u, int v) { adj[u].push_back(v); }
+	int dfs(int u) {
+		int low = disc[u] = ++ti; 
+    stk.push_back(u);
+		for (auto& v: adj[u]) if (comp[v] == -1) {
+      low = !disc[v] ? min(low, dfs(v)) : min(low, disc[v]);
+    }
+		if (low == disc[u]) {
+			comps.push_back(u); 
+      for (int v = -1; v != u;) {
+				comp[v = stk.back()] = u;
+        stk.pop_back();
+      }
 		}
 		return low;
 	}
 	void gen() {
-		F0R(i,N) if (!disc[i]) dfs(i);
-		reverse(all(comps));
+    for (int i = 0; i < N; i++) {
+      if (!disc[i]) dfs(i);
+    }
+		ranges::reverse(comps);
 	}
 };

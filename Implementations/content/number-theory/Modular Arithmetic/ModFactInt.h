@@ -1,26 +1,30 @@
 /**
- * Description: pre-compute factorial mod inverses,
- 	* assumes $MOD$ is prime and $N < MOD$.
+ * Description: Combinations modulo a prime $MOD$. Assumes $2\le N \le MOD$.
  * Time: O(N)
  * Source: KACTL
  * Verification: https://dmoj.ca/problem/tle17c4p5
+ * Usage: F.gen(100), F.C(6, 4); // 15
  */
 
-#include "ModInt.h"
-
-struct Factorials {
-	vi invs, fac, ifac; // make sure to convert to LL before doing any multiplications ...
-	void genFac(int N) {
-		invs.rsz(N), fac.rsz(N), ifac.rsz(N); 
-		invs[1] = fac[0] = ifac[0] = 1; 
-		FOR(i,2,N) invs[i] = int(MOD-(ll)MOD/i*invs[MOD%i]%MOD);
-		FOR(i,1,N) {
-			fac[i] = int((ll)fac[i-1]*i%MOD);
-			ifac[i] = int((ll)ifac[i-1]*invs[i]%MOD);
-		}
-	}
-	int C(int a, int b) {
-		if (a < b || b < 0) return 0;
-		return (ll)fac[a]*ifac[b]%MOD*ifac[a-b]%MOD; 
-	}
-};
+struct {
+  vector<int> inv, fac, ifac;
+  void gen(int N) {
+    inv.resize(N); fac.resize(N); ifac.resize(N);
+    inv[1] = fac[0] = ifac[0] = 1;
+    for (int i = 2; i < N; i++){
+      inv[i] = int(MOD-(int64_t)MOD/i*inv[MOD%i]%MOD);
+    }
+    for (int i = 1; i < N; i++) {
+			fac[i] = int((int64_t)fac[i-1]*i%MOD);
+			ifac[i] = int((int64_t)ifac[i-1]*inv[i]%MOD);
+    }
+  }
+  int P(int n, int r) { // nPr
+    if (n < r || r < 0) return 0;
+    return (int64_t)fac[n]*ifac[n-r]%MOD;
+  }
+  int C(int n, int r) { // nCr
+    if (n < r || r < 0) return 0;
+    return (int64_t)fac[n]*ifac[r]%MOD*ifac[n-r]%MOD; 
+  }
+} F;
