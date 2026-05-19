@@ -23,5 +23,5 @@
 	"editor.insertSpaces": false,
 	"terminal.integrated.tabs.location": "left",
 	"terminal.integrated.tabs.enabled": false,
-	"chat.disableAIFeatures": true,
+	"chat.disableAIFeatures": true
 }
