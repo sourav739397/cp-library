@@ -17,27 +17,27 @@
 
 struct TwoSAT {
 	int N;
-  vector<bool> ans;
-  vector<pair<int, int>> edges;
+	vector<bool> ans;
+	vector<pair<int, int>> edges;
 	TwoSAT(int _N) { 
-    N = _N; 
-    ans.resize(N);
-  }
+		N = _N; 
+		ans.resize(N);
+	}
 	void either(int u, int v) { 
 		u = max(2*u, -1-2*u), v = max(2*v, -1-2*v);
 		edges.push_back({u, v}); 
-  }
+	}
 	bool gen() {
-    SCC S(2*N);
-    for (auto& [u, v]: edges) {
-      S.ae(u^1, v);
-      S.ae(v^1, u);
-    }
+		SCC S(2*N);
+		for (auto& [u, v]: edges) {
+			S.ae(u^1, v);
+			S.ae(v^1, u);
+		}
 		S.gen(); 
-    for (int i = 0; i < N; i++) {
-      if (S.comp[2*i] == S.comp[2*i^1]) return false;
-      ans[i] = S.comp[2*i] > S.comp[2*i^1];
-    }
-    return true;
+		for (int i = 0; i < N; i++) {
+			if (S.comp[2*i] == S.comp[2*i^1]) return false;
+			ans[i] = S.comp[2*i] > S.comp[2*i^1];
+		}
+		return true;
 	}
 };
