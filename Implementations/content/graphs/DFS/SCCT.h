@@ -11,33 +11,33 @@
 
 struct SCC {
 	int N, ti = 0;
-  vector<vector<int>> adj;
+	vector<vector<int>> adj;
 	vector<int> disc, comp, stk, comps;
-	SCC(int _N){ 
-    N = _N, 
-    adj.resize(N);
+	SCC(int _N) {
+		N = _N;
+		adj.resize(N);
 		disc.resize(N), comp.resize(N, -1);
-  }
+	}
 	void ae(int u, int v) { adj[u].push_back(v); }
 	int dfs(int u) {
-		int low = disc[u] = ++ti; 
-    stk.push_back(u);
+		int low = disc[u] = ++ti;
+		stk.push_back(u);
 		for (auto& v: adj[u]) if (comp[v] == -1) {
-      low = !disc[v] ? min(low, dfs(v)) : min(low, disc[v]);
-    }
+			low = !disc[v] ? min(low, dfs(v)) : min(low, disc[v]);
+		}
 		if (low == disc[u]) {
-			comps.push_back(u); 
-      for (int v = -1; v != u;) {
+			comps.push_back(u);
+			for (int v = -1; v != u;) {
 				comp[v = stk.back()] = u;
-        stk.pop_back();
-      }
+				stk.pop_back();
+			}
 		}
 		return low;
 	}
 	void gen() {
-    for (int i = 0; i < N; i++) {
-      if (!disc[i]) dfs(i);
-    }
+		for (int i = 0; i < N; i++) {
+			if (!disc[i]) dfs(i);
+		}
 		ranges::reverse(comps);
 	}
 };

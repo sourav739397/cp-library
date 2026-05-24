@@ -12,16 +12,27 @@
  	* https://cses.fi/problemset/task/1705/
  */
 
+#include "bits/stdc++.h"
+using namespace std;
+
 struct BCC {
-	V<vpi> adj; vpi ed; 
-	V<vi> edgeSets, vertSets; // edges for each bcc
-	int N, ti = 0; vi disc, stk; 
-	void init(int _N) { N = _N; disc.rsz(N), adj.rsz(N); }
-	void ae(int x, int y) { 
-		adj[x].eb(y,sz(ed)), adj[y].eb(x,sz(ed)), ed.eb(x,y); }
-	int dfs(int x, int p = -1) { // return lowest disc
-		int low = disc[x] = ++ti;
-		each(e,adj[x]) if (e.s != p) {
+	vector<pair<int, int>> ed; 
+	vector<vector<pair<int, int>>> adj;
+	vector<vector<int>> edgeSets, vertSets; // edges for each bcc
+	int N, ti = 0; 
+	vector<int> disc, stk; 
+	BCC(int _N) { 
+		N = _N; 
+		disc.resize(N), adj.resize(N); 
+	}
+	void ae(int u, int v) { 
+		adj[u].emplace_back(v, size(ed));
+		adj[v].emplace_back(u, size(ed));
+		ed.emplace_back(u, v); 
+	}
+	int dfs(int u, int p = -1) { // return lowest disc
+		int low = disc[u] = ++ti;
+		for (auto e : adj[u]) if (e.s != p) {
 			if (!disc[e.f]) {
 				stk.pb(e.s); // disc[x] < LOW -> bridge
 				int LOW = dfs(e.f,e.s); ckmin(low,LOW); 
