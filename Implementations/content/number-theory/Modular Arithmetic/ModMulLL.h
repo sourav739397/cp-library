@@ -14,6 +14,6 @@ ul modMul(ul a, ul b, const ul mod){
 ul modPow(ul a, ul b, const ul mod) {
 	if (b == 0) return 1;
 	ul res = modPow(a, b/2, mod); 
-  res = modMul(res, res, mod);
+	res = modMul(res, res, mod);
 	return b&1 ? modMul(res, a, mod) : res;
 }

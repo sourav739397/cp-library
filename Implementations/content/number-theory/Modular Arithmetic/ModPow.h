@@ -5,8 +5,8 @@
  */
 
 int modPow(int a, int64_t p, const int mod) {
-  if (p == 0) return 1;
-  int res = modPow(a, p/2, mod); 
-  res = (1ll*res*res) % mod;
-  return p&1 ? (1ll*res*a) % mod : res;
+	if (p == 0) return 1;
+	int res = modPow(a, p/2, mod); 
+	res = (1ll*res*res) % mod;
+	return p&1 ? (1ll*res*a) % mod : res;
 }

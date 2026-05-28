@@ -47,8 +47,8 @@ struct HashRange {
 		return sum[r+1] - pows[len] * sum[l];
 	}
 	uint64_t hash64(int l, int r) {
-	H p = hash(l, r);
-	return (uint64_t) p[0]<<32|p[1];
+		H p = hash(l, r);
+		return (uint64_t) p[0]<<32|p[1];
 	}
 	// int lcp(HashRange& b) { return first_true([&](int x) {
 	// 	return sum[x] != b.sum[x]; },0,min(sz(S),sz(b.S)))-1; 

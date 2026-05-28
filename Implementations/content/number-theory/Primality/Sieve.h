@@ -4,7 +4,7 @@
  * Time: O(N\log\log N) or O(N)
  * Source: KACTL 
  * Verification: https://open.kattis.com/problems/primesieve
- */
+*/
 
 template<int N> struct Sieve { 
 	bitset<N> is_prime; vector<int> primes;

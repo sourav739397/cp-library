@@ -1,6 +1,6 @@
 /**
  * Description: A set (not multiset!) with support for finding the $n$'th
-   * element, and finding the index of an element. Change \texttt{null\_type} to get a map.
+ *	element, and finding the index of an element. Change \texttt{null\_type} to get a map.
  * Time: O(\log N)
  * Source: KACTL
    * https://codeforces.com/blog/entry/11080
@@ -9,21 +9,20 @@
 
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
-tcT> using Tree = tree<T, null_type, less<T>, 
-	rb_tree_tag, tree_order_statistics_node_update>; 
-#define ook order_of_key
-#define fbo find_by_order
+template<class T> using IndexedSet = tree<T, null_type,
+less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
-void treeExample() {
-	Tree<int> t, t2; t.insert(8);
-	auto it = t.insert(10).f; assert(it == t.lb(9));
-	assert(t.ook(10) == 1 && t.ook(11) == 2 && *t.fbo(0) == 8);
-	t.join(t2); // assuming T < T2 or T > T2, merge t2 into t
+#define ook order_of_key // position of the given element
+#define fbo find_by_order // return an iterator
+
+// Number of element <= k
+int atMost(IndexedSet<pair<int, int>>& T, int k) {
+	return T.order_of_key({k, INT_MAX});
 }
-
-/**
-int atMost(Tree<pi>& T, int r) { 
-	return T.ook({r,MOD}); }
-int getSum(Tree<pi>& T, int l, int r) { 
-	return atMost(T,r)-atMost(T,l-1); }
-*/
+// Number of element grater >= k
+int atLeast(IndexedSet<pair<int, int>>& T, int k) {
+	return T.size() - T.order_of_key({k, INT_MIN});
+}
+int getSum(IndexedSet<pair<int, int>>& T, int l, int r) {
+	return atMost(T,r)-atMost(T,l-1);
+}
