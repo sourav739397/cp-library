@@ -76,30 +76,48 @@ Integration by parts:
 
 \section{Sums/Series}
 
+	\subsection{Progressions}
+		Arithmetic (first term $a$, diff $d$): $S_n = \frac{n}{2} (2a + (n - 1)d)$\\
+		Geometric (first term $a$, ratio $r \neq 1$): $S_n = a \frac{r^n - 1}{r - 1}$\\
+		Infinite GP ($|r| < 1$): $S_\infty = \frac{a}{1 - r}$\\
+		Arithmetico-Geometric ($a, (a+d)r, (a+2d)r^2\dots$, $|r| < 1$): $S_\infty = \frac{a}{1 - r} + \frac{dr}{(1 - r)^2}$
+
+	\subsection{Finite Sums}
+		\begin{align*}
+		1 + 2 + 3 + \dots + n &= \frac{n(n+1)}{2} \\
+		1^2 + 2^2 + 3^2 + \dots + n^2 &= \frac{n(n+1)(2n+1)}{6} \\
+		1^3 + 2^3 + 3^3 + \dots + n^3 &= \frac{n^2(n+1)^2}{4} \\
+		1^4 + 2^4 + 3^4 + \dots + n^4 &= \frac{n(n+1)(2n+1)(3n^2+3n - 1)}{30} \\
+		1 + 3 + 5 + \dots + 2n-1 &= n^2 \\
+		2 + 4 + 6 + \dots + 2n &= n(n+1)
+		\end{align*}
+		
+	\subsection{Taylor Series}
+		$$\ln(1+x) = x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\dots,\,(-1<x\leq1)$$
+		$$\sqrt{1+x} = 1+\frac{x}{2}-\frac{x^2}{8}+\frac{2x^3}{32}-\frac{5x^4}{128}+\dots,\,(-1\leq x\leq1)$$
+		$$\sin x = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\dots,\,(-\infty<x<\infty)$$
+		$$\cos x = 1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\dots,\,(-\infty<x<\infty)$$
+
 \begin{comment}
 \[ c^a + c^{a+1} + \dots + c^{b} = \frac{c^{b+1} - c^a}{c-1}, c \neq 1 \]
-\begin{align*}
-	1 + 2 + 3 + \dots + n &= \frac{n(n+1)}{2} \\
-	1^2 + 2^2 + 3^2 + \dots + n^2 &= \frac{n(n+1)(2n+1)}{6} \\
-	1^3 + 2^3 + 3^3 + \dots + n^3 &= \frac{n^2(n+1)^2}{4} \\
-	1^4 + 2^4 + 3^4 + \dots + n^4 &= \frac{n(n+1)(2n+1)(3n^2+3n - 1)}{30} 
-\end{align*}
+
 \end{comment}
 
 % $$1^4 + 2^4 + 3^4 + \dots + n^4= \frac{n(n+1)(2n+1)(3n^2+3n - 1)}{30}$$
 % $$e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dots,\,(-\infty<x<\infty)$$
-$$\ln(1+x) = x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\dots,\,(-1<x\leq1)$$
-$$\sqrt{1+x} = 1+\frac{x}{2}-\frac{x^2}{8}+\frac{2x^3}{32}-\frac{5x^4}{128}+\dots,\,(-1\leq x\leq1)$$
-$$\sin x = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\dots,\,(-\infty<x<\infty)$$
-$$\cos x = 1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\dots,\,(-\infty<x<\infty)$$
+
+% $$\ln(1+x) = x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\dots,\,(-1<x\leq1)$$
+% $$\sqrt{1+x} = 1+\frac{x}{2}-\frac{x^2}{8}+\frac{2x^3}{32}-\frac{5x^4}{128}+\dots,\,(-1\leq x\leq1)$$
+% $$\sin x = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\dots,\,(-\infty<x<\infty)$$
+% $$\cos x = 1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\dots,\,(-\infty<x<\infty)$$
 % $$e^{ix}=\cos x+i\sin x$$
 
-% \section{Probability theory}
-% Let $X$ be a discrete random variable with probability $p_X(x)$ of assuming the value $x$. It will then have an expected value (mean) $\mu=\mathbb{E}(X)=\sum_xxp_X(x)$ and variance $\sigma^2=V(X)=\mathbb{E}(X^2)-(\mathbb{E}(X))^2=\sum_x(x-\mathbb{E}(X))^2p_X(x)$ where $\sigma$ is the standard deviation. 
-% \[\mathbb{E}(aX+bY) = a\mathbb{E}(X)+b\mathbb{E}(Y)\]
-% If $X,Y$ are independent, \[V(aX+bY) = a^2V(X)+b^2V(Y).\]
-% Expectation is linear
-% If $X$ is instead continuous it will have a probability density function $f_X(x)$ and the sums above will instead be integrals with $p_X(x)$ replaced by $f_X(x)$.
+\section{Probability theory}
+Let $X$ be a discrete random variable with probability $p_X(x)$ of assuming the value $x$. It will then have an expected value (mean) $\mu=\mathbb{E}(X)=\sum_xxp_X(x)$ and variance $\sigma^2=V(X)=\mathbb{E}(X^2)-(\mathbb{E}(X))^2=\sum_x(x-\mathbb{E}(X))^2p_X(x)$ where $\sigma$ is the standard deviation. 
+\[\mathbb{E}(aX+bY) = a\mathbb{E}(X)+b\mathbb{E}(Y)\]
+If $X,Y$ are independent, \[V(aX+bY) = a^2V(X)+b^2V(Y).\]
+Expectation is linear
+If $X$ is instead continuous it will have a probability density function $f_X(x)$ and the sums above will instead be integrals with $p_X(x)$ replaced by $f_X(x)$.
 
 
 % \subsection{Discrete distributions}
