@@ -414,4 +414,17 @@
   "description": "class for __128int",
   
 },
+"add MOD operation": {
+  "prefix": "addMOD",
+  "body": [
+    "constexpr int MOD = 998244353;",
+    "int add(int x, int y) {",
+    "	x += y;",
+    "	if (x >= MOD) x -= MOD;",
+    "	if (x < 0) x += MOD;",
+    "	return x;",
+    "}"
+  ],
+  "description": "add MOD operation"
+}
 }
