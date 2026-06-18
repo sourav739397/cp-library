@@ -11,25 +11,36 @@
  */
 
 template<bool directed> struct Euler {
-	int N; V<vpi> adj; V<vpi::iterator> its; vb used;
-	void init(int _N) { N = _N; adj.rsz(N); }
-	void ae(int a, int b) {
-		int M = sz(used); used.pb(0); 
-		adj[a].eb(b,M); if (!directed) adj[b].eb(a,M); }
-	vpi solve(int src = 0) { 
-		its.rsz(N); F0R(i,N) its[i] = begin(adj[i]);
-		vpi ans, s{{src,-1}}; // {{vert,prev vert},edge label}
+	int N; V<vector<pair<int, int>>> adj;
+	V<vector<pair<int, int>>::iterator> its; vector<bool> used;
+	Euler(int _N) {
+		N = _N;
+		adj.resize(N);
+	}
+	void ae(int u, int v) {
+		int M = size(used); used.push_back(0);
+		adj[u].push_back({v, M});
+		if (!directed) adj[v].push_back({u, M});
+	}
+	vector<pair<int, int>> gen(int src = 0) { 
+		its.resize(N); 
+		for(int i = 0, i < N; i++) its[i] = begin(adj[i]);
+		vector<pair<int, int>> ans, s{{src, -1}}; // {{vert,prev vert},edge label}
 		int lst = -1; // ans generated in reverse order
-		while (sz(s)) { 
-			int x = s.bk.f; auto& it=its[x], en=end(adj[x]);
+		while (size(s)) { 
+			int x = s.back().first; 
+			auto& it = its[x], en = end(adj[x]);
 			while (it != en && used[it->s]) ++it;
 			if (it == en) { // no more edges out of vertex
 				if (lst != -1 && lst != x) return {};
 				// not a path, no tour exists
-				ans.pb(s.bk); s.pop_back(); if (sz(s)) lst=s.bk.f;
-			} else s.pb(*it), used[it->s] = 1;
+				ans.push_back(s.back()); 
+				s.pop_back(); 
+				if (sz(s)) lst = ns.back().first;
+			} 
+			else s.push_back(*it), used[it->s] = 1;
 		} // must use all edges
-		if (sz(ans) != sz(used)+1) return {}; 
-		reverse(all(ans)); return ans;
+		if (size(ans) != sz(used)+1) return {};
+		ranges::reverse(ans); return ans;
 	}
 };

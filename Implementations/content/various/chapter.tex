@@ -37,6 +37,7 @@ When doing DP on intervals: $a[i][j] = \min_{i < k < j}(a[i][k] + a[k][j]) + f(i
 
 	\subsection{STL Utilities}
 		\begin{itemize}
+			\item \lstinline{template<class T> using priority_queue_min = priority_queue<T, vector<T>, greater<T>>;} Min-heap priority queue.
 			\item \lstinline{ranges::rotate(p, ranges::min_element(p));} Lexicographically smallest cyclic shift.
 			\item \lstinline{next_permutation(v.begin(), v.end());} Next permutation.
 			\item \lstinline{prev_permutation(v.begin(), v.end());} Previous permutation.
