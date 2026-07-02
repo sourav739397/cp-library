@@ -1,0 +1,9 @@
+[
+	{
+		"key": "alt+r",
+		"command": "workbench.action.terminal.sendSequence",
+		"args": {
+			"text": "bash run.sh ${fileBasenameNoExtension}\n"
+		}
+	}
+]

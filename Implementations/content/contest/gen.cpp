@@ -1,8 +1,3 @@
-#include "bits/stdc++.h"
-#include "assert.h"
-using namespace std;
-
-
 ////////////// DISTRIBUTIONS
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
@@ -47,19 +42,21 @@ vector<int> randPermutationZero(int N) {
 }
 
 // shuffle permutation of [0,N-1]
-vi shufPerm(vi v) {
-	int N = sz(v); vi key = randPerm(N);
-	vi res(N); F0R(i,N) res[key[i]] = key[v[i]];
+vector<int> shufPerm(vector<int> v) {
+	int N = size(v); 
+	vector<int> key = randPermutation(N);
+	vector<int> res(N); 
+	for(int i = 0; i < N; i++) res[key[i]] = key[v[i]];
 	return res;
 }
 
 // vector with all entries in [L,R]
 vector<int> randVector(int N, int L, int R) {
-  vector<int> v(N);
-  for (int i = 0; i < N; i++) {
-    v[i] = rng_int(L, R);
-  }
-  return v;
+	vector<int> v(N);
+	for (int i = 0; i < N; i++) {
+		v[i] = rng_int(L, R);
+	}
+	return v;
 }
 
 // vector with all entries in [L,R], unique

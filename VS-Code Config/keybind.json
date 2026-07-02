@@ -28,6 +28,7 @@
       "text": "CPA \"${fileBasename}\" -d\n"
     }
   },
+  
   {
     "key": "alt+a", // run file without compile(c, c++)
     "command": "workbench.action.terminal.sendSequence",

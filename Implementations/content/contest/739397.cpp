@@ -11,6 +11,7 @@ typedef pair<int, int> pii;
 #define all(x) begin(x), end(x)
 #define each(a, x) for(auto& a : x)
 #define FOR(i, a, b) for(int i = (a); i < (b); ++i)
+#define dbg(x) cerr <<__LINE__<<"| "<<#x<<" = "<<x<<endl 
 
 int main() {
 	cin.sync_with_stdio(0); cin.tie(0);

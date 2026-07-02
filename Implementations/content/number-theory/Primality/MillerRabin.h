@@ -13,7 +13,9 @@ bool prime(ul n) { // not ll!
 	ul A[] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
 	for (auto a : A) {
 		ul p = modPow(a, d, n), i = s;
-		while (p != 1 && p != n-1 && a % n && i--) p = modMul(p, p, n);
+		while (p != 1 && p != n-1 && a % n && i--) {
+			p = modMul(p, p, n);
+		}
 		if (p != n-1 && i != s) return false;
 	}
 	return true;

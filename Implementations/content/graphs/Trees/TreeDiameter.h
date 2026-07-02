@@ -9,12 +9,11 @@
 
 struct TreeDiameter {
 	int N, diaLen;  
-	vector<int> dist, dia;
 	vector<vector<int>> adj;
-		TreeDiameter(int _N) {
+	vector<int> dist, dia, center, par;
+	TreeDiameter(int _N) {
 		N = _N; dia = {0, 0};
-		adj.resize(N);
-		dist.resize(N);
+		par.resie(N);adj.resize(N); dist.resize(N);
 	}
 	void ae(int u, int v) { 
 		adj[u].push_back(v);
@@ -31,11 +30,10 @@ struct TreeDiameter {
 			if (dist[i] > dist[dia[1]]) dia[1] = i;
 		}
 		diaLen = dist[dia[1]];
-		// center vertex of dia[0] -> dia[1]
-		// int cen = dia[1]; 
-		// for (int i = 0; i < diaLen/2; ++i) cen = par[cen];
-		// center = {cen}; 
-		// if (diaLen&1) center.push_back(par[cen]);
+		int cen = dia[1]; 
+		for (int i = 0; i < diaLen/2; ++i) cen = par[cen];
+		center = {cen}; 
+		if (diaLen&1) center.push_back(par[cen]);
 	}
 	void dfs(int u, int p = -1) {
 		for (auto& v: adj[u]) if (v != p) {

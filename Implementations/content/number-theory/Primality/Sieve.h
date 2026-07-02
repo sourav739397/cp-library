@@ -20,7 +20,7 @@ template<int N> struct Sieve {
 		for (int i = 1; i < N; i += 2) spf[i] = i;
 		for (int i = 2; i < N; i += 2) spf[i] = 2;
 		for (int i = 3; i*i < N; i += 2) if (spf[i] == i) 
-		for (int j = i*i; j < N; j += i*2) spf[j] == j ? spf[j] = i;
+		for (int j = i*i; j < N; j += i*2) if (spf[j] == j) spf[j] = i;
 	}
 	// int spf[N];
 	// Sieve() { // above is faster
