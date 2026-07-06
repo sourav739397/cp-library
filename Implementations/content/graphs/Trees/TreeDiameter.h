@@ -8,7 +8,7 @@
  */
 
 struct TreeDiameter {
-	int N, diaLen;  
+	int N, diaLen;
 	vector<vector<int>> adj;
 	vector<int> dist, dia, center, par;
 	TreeDiameter(int _N) {

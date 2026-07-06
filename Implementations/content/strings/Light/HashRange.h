@@ -1,8 +1,8 @@
 /**
- * Description: Polynomial hash for substrings with two bases.
+ * Description: Polynomial hash for substrings with double bases.
  * Source: Benq
  * Verification: https://cses.fi/problemset/task/1753/
- */
+*/
 
 using H = array<int, 2>;
 H makeH(char c) { return {c, c}; }
