@@ -14,23 +14,30 @@
 void ad(vi& a, int b) { ckmin(b,sz(a)-1); if (b>=0) a[b]++; }
 void prop(vi& a) { R0F(i,sz(a)-1) a[i] += a[i+1]; }
 template<int SZ> struct Centroid {
-	vi adj[SZ]; void ae(int a,int b){adj[a].pb(b),adj[b].pb(a);}
+	vi adj[SZ];
 	bool done[SZ]; // processed as centroid yet
 	int N,sub[SZ],cen[SZ],lev[SZ]; // subtree size, centroid anc
 	int dist[32-__builtin_clz(SZ)][SZ]; // dists to all ancs
 	vi stor[SZ], STOR[SZ];
-	void dfs(int x, int p) { sub[x] = 1; 
-		each(y,adj[x]) if (!done[y] && y != p) 
-			dfs(y,x), sub[x] += sub[y]; 
+	void ae(int u, int v) {
+		adj[u].push_back(v);
+		adj[v].push_back(u);
 	}
-	int centroid(int x) {
-		dfs(x,-1); 
-		for (int sz = sub[x];;) {
-			pi mx = {0,0};
-			each(y,adj[x]) if (!done[y] && sub[y] < sub[x]) 
-				ckmax(mx,{sub[y],y});
-			if (mx.f*2 <= sz) return x; 
-			x = mx.s;
+	void dfs(int u, int p) {
+		sub[u] = 1;
+		for (auto& v: adj[u]) if (!done[v] && v != p) {
+			dfs(v, u); sub[u] += sub[v];
+		}
+	}
+	int centroid(int u) {
+		dfs(u, -1);
+		for (int sz = sub[u];;) {
+			pair<int, int> max = {0, 0};
+			for (auto& v: adj[u]) if (!done[v] && sub[v] < sub[u]) {
+				max = std::max(max, {sub[v], v});
+			}
+			if (2*max.first <= sz) return u; 
+			u = max.second;
 		}
 	}
 	void genDist(int x, int p, int lev) {

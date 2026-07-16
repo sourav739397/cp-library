@@ -15,17 +15,17 @@
 template<class T> struct Stack {
 	vector<pair<T, T>> stk;
 	T cmb(T x) {
-	return stk.empty() ? x : min(stk.back().second, x);
+		return stk.empty() ? x : min(stk.back().second, x);
 	}
 	void push(T x) { stk.push_back({x, cmb(x)}); } 
 	void pop() { stk.pop_back(); }
 	T agg() const { return stk.back().second; }
 };
- 
+
 template<class T> struct Queue {
 	Stack<T> in, out;
 	T cmb(T a, T b) {
-	return min(a, b);
+		return min(a, b);
 	}
 	void push(T x) { in.push(x); }
 	void pop() {
@@ -36,8 +36,8 @@ template<class T> struct Queue {
 		out.pop();
 	}
 	T query() {
-	if (in.stk.empty()) return out.agg();
-	if (out.stk.empty()) return in.agg();
-	return cmb(in.agg(), out.agg());
+		if (in.stk.empty()) return out.agg();
+		if (out.stk.empty()) return in.agg();
+		return cmb(in.agg(), out.agg());
 	}
 };

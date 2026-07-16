@@ -40,11 +40,12 @@ template<class T, int SZ>struct LazySeg {
 		update(lo, hi, inc, 2*ind+1, M+1, R);
 		pull(ind);
 	}
-	T query(int lo, int hi, int ind = 1, int L = 0, int R = SZ-1) {
+	T query(int lo, int hi, int ind, int L, int R) {
 		push(ind, L, R);
 		if (lo > R || L > hi) return ID;
 		if (lo <= L && R <= hi) return seg[ind];
 		int M = (L+R) / 2;
 		return cmb(query(lo, hi, 2*ind, L, M), query(lo, hi, 2*ind+1, M+1, R));
 	}
+	T query(int lo, int hi) { return query(lo, hi, 1, 0, N-1); }
 };

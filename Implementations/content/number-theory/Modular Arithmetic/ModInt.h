@@ -27,7 +27,7 @@ template<int MOD, int RT> struct mint {
 		return a.v < b.v; }
 	friend void re(mint& a) { ll x; re(x); a = mint(x); }
 	friend str ts(mint a) { return ts(a.v); }
-   
+
 	mint& operator+=(const mint& o) { 
 		if ((v += o.v) >= MOD) v -= MOD; 
 		return *this; }
