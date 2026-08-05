@@ -9,7 +9,7 @@
 * Verification: http://www.spoj.com/problems/MKTHNUM/
 */
 
-template<int SZ> struct Wavelet { 
+template<int SZ> struct Wavelet {
 	vi nexl[SZ], nexr[SZ];
 	void build(vi a, int ind = 1, int L = 0, int R = SZ-1) { 
 		if (L == R) return;

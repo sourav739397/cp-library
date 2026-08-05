@@ -10,13 +10,9 @@ struct Bipartite {
 	int N;
 	vector<int> color;
 	vector<vector<int>> adj;
-	Bipartite(int _N) {
-		N = _N;
-		adj.resize(N); color.resize(N);
-	}
+	Bipartite(int _N) : N(_N), color(N), adj(N) {}
 	void ae(int u, int v) {
-		adj[u].push_back(v);
-		adj[v].push_back(u);
+		adj[u].push_back(v); adj[v].push_back(u);
 	}
 	bool check() {
 		queue<int> todo;

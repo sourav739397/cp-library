@@ -22,7 +22,7 @@ struct GridBFS {
 	bool valid(int x, int y) {
 		return !(x < 0 || x >= N || y < 0 || y >= M);
 	}
-	void gen(P& st) {
+	void gen(P st) {
 		queue<P> todo;
 		todo.push(st); dist[st[0]][st[1]] = 0;
 		while (todo.size()) {
@@ -36,7 +36,7 @@ struct GridBFS {
 			}
 		}
 	}
-	string getPath(P& st, P en) {
+	string getPath(P st, P en) {
 		if (dist[en[0]][en[1]] == -1) return "";
 		string res;
 		while (en != st) {
