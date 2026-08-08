@@ -6,11 +6,11 @@
  * Usage: LazySeg<int64_t> T(n); T.update(l, r, val);
  */
 
-template<class T>struct LazySeg {
+template<class T>struct LazySegmentTree {
 	const T ID{};
 	T cmb(T a, T b) { return a + b; }
 	int N = 1; vector<T> seg, lazy;
-	LazySeg(int _N) {
+	LazySegmentTree(int _N) {
 		while (N < _N) N *= 2;
 		seg = lazy = vector(2*N, ID);
 	}
@@ -36,6 +36,7 @@ template<class T>struct LazySeg {
 		update(lo, hi, inc, 2*ind+1, M+1, R);
 		pull(ind);
 	}
+	void update(int lo, int hi, T inc) { update(lo, hi, inc, 1, 0, N-1); }
 	T query(int lo, int hi, int ind, int L, int R) {
 		push(ind, L, R);
 		if (lo > R || L > hi) return ID;
@@ -43,6 +44,5 @@ template<class T>struct LazySeg {
 		int M = (L+R) / 2;
 		return cmb(query(lo,hi,2*ind,L,M), query(lo,hi,2*ind+1,M+1,R));
 	}
-	void update(int lo, int hi, T inc) { update(lo, hi, inc, 1, 0, N-1); }
 	T query(int lo, int hi) { return query(lo, hi, 1, 0, N-1); }
 };

@@ -1,65 +1,58 @@
 /**
  * Description: 2D matrix operations.
  * Source: KACTL
- * Verification: https://dmoj.ca/problem/si17c1p5, SPOJ MIFF
- */
+ * Verification: https://cses.fi/problemset/task/1722/
+*/
 
-#include "../../number-theory (11.1)/Modular Arithmetic/ModInt.h"
+#include "ModIntShort.h"
 
-using T = mi;
-using Mat = vector<vector<T>>; // use array instead if tight TL
-
-Mat makeMat(int r, int c) {
-	return Mat(r, vector<T>(c));
-}
-Mat makeId(int n) {
-	Mat m = makeMat(n, n);
-	for (int i = 0; i < n; i++) m[i][i] = 1;
-	return m;
-}
-
-Mat operator+(Mat& a, const Mat& b) {
-	assert(sz(a) == sz(b) && sz(a[0]) == sz(b[0]));
-	int x = size(a), y = size(a[0]);
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < y; j++) {
-			a[i][j] += b[i][j];
-		}
+template<class T> struct Mat {
+	int N, M; vector<vector<T>> v;
+	Mat() : Mat(0,0) {}
+	Mat(int _N, int _M) : N(_N), M(_M) {
+		v.assign(N, vector<T>(M));
 	}
-	return a;
-}
-
-Mat operator-(Mat& a, const Mat& b) {
-	assert(sz(a) == sz(b) && sz(a[0]) == sz(b[0]));
-	int x = size(a), y = size(a[0]);
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < y; j++) {
-			a[i][j] -= b[i][j];
-		}
+	Mat(const vector<vector<T>>& _v) {
+		v = _v;
+		N = v.size(), M = v[0].size();
 	}
-	return a;
-}
-
-Mat operator*(const Mat& a, const Mat& b) {
-	int x = size(a), y = size(a[0]), z = size(b[0]); 
-	assert(y == sz(b)); Mat c = makeMat(x, z);
-	for (int i = 0; i < x; i++) {
-		for (int j = 0; j < y; j++) {
-			for (int k = 0; k < z; k++) {
-				c[i][k] += a[i][j]*b[j][k];
+	void makeId() {
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				v[i][j] = (i == j);
 			}
 		}
 	}
-	return c;
-}
-
-Mat& operator*=(Mat& a, const Mat& b) { return a = a*b; }
-Mat& operator+=(Mat& a, const Mat& b) { return a = a+b; }
-Mat& operator-=(Mat& a, const Mat& b) { return a = a-b; }
-
-Mat pow(Mat m, int64_t p) {
-	int n = sz(m); assert(n == sz(m[0]) && p >= 0);
-	Mat res = makeId(n);
-	for (; p; p /= 2, m *= m) if (p&1) res *= m;
-	return res;
-}
+	Mat& operator+=(const Mat& o) {
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				v[i][j] += o.v[i][j];
+			}
+		}
+		return *this; }
+	Mat& operator-=(const Mat& o) {
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				v[i][j] -= o.v[i][j];
+			}
+		}
+		return *this; }
+	Mat& operator*=(const Mat& o) {
+		Mat ans(N, o.M);
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				for (int k = 0; k < o.M; k++) {
+					ans.v[i][k] += v[i][j]*o.v[j][k];
+				}
+			}
+		}
+		return *this = move(ans); }
+	friend Mat pow(Mat o, int64_t p) {
+		Mat ans(o.N, o.M); ans.makeId();
+		for (; p; p /= 2, o *= o) if (p&1) ans *= o;
+		return ans;
+	}
+	friend Mat operator+(Mat a, const Mat& b) { return a += b; }
+	friend Mat operator-(Mat a, const Mat& b) { return a -= b; }
+	friend Mat operator*(Mat a, const Mat& b) { return a *= b; }
+};
