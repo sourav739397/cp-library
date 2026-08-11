@@ -3,19 +3,19 @@
  	* of length $k^n$ that contains every length $n$ string as substring. 
  * Source: https://en.wikipedia.org/wiki/De_Bruijn_sequence
  * Verification: https://cses.fi/problemset/task/1692/
- */ 
+*/
 
 vector<int> deBruijnSequence(int k, int n) {
-  if (k == 1) return {0};
-  vector<int> seq, aux(n+1);
-  auto gen = [&](this auto&& self, int t, int p)->void {
-    if (t > n && n%p == 0) for (int i = 1; i <= p; i++) {
-      seq.push_back(aux[i]);
-    }
-    else if (t <= n) {
-      aux[t] = aux[t-p]; self(t+1, p);
-      while (++aux[t] < k) self(t+1, t);
-    }
-  };
-  gen(1, 1); return seq;
+	if (k == 1) return {0};
+	vector<int> seq, aux(n+1);
+	auto gen = [&](this auto&& self, int t, int p)->void {
+		if (t > n && n%p == 0) for (int i = 1; i <= p; i++) {
+			seq.push_back(aux[i]);
+		}
+		else if (t <= n) {
+			aux[t] = aux[t-p]; self(t+1, p);
+			while (++aux[t] < k) self(t+1, t);
+		}
+	};
+	gen(1, 1); return seq;
 }
