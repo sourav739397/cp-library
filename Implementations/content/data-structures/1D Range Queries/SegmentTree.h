@@ -4,7 +4,7 @@
  * Time: O(\log N)
  * Source: KACTL
  * Verification: https://cses.fi/problemset/task/1648/
- */
+*/
 
 template<class T> struct SegmentTree {
 	const T ID{};
