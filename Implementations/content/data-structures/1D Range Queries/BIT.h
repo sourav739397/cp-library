@@ -2,15 +2,12 @@
  * Description: Computes partial sums a[0] + a[1] + ... + a[pos - 1], and updates single elements a[i],
 	* taking the difference between the old and new value. 0-Indexed.
  * Time: Both operations are $O(\log N)$.
- */
+*/
 #pragma once
 
 template<class T> struct BIT {
 	int N; vector<T> bit;
-	BIT(int _N) {
-		N = _N;
-		bit.resize(N);
-	}
+	BIT(int _N) : N(_N), bit(N) {}
 	void add(int p, T x) {
 		for (++p; p <= N; p += p&-p) bit[p - 1] += x;
 	}
@@ -25,8 +22,9 @@ template<class T> struct BIT {
 		int pos = 0;
 		for (int pw = 1 << 25; pw; pw >>= 1) {
 			int npos = pos + pw;
-			if (npos <= N && bit[npos - 1] < sum)
-				pos = npos, sum -= bit[pos - 1];
+			if (npos <= N && bit[npos - 1] < sum) {
+				pos = npos; sum -= bit[pos - 1];
+			}
 		}
 		return pos;
 	}

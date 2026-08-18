@@ -5,7 +5,7 @@
  * Verification: 
    * http://www.spoj.com/problems/PT07Z/
    * https://codeforces.com/contest/1182/problem/D
- */
+*/
 
 struct TreeDiameter {
 	int N, diaLen;

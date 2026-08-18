@@ -34,8 +34,8 @@ template<class T> struct MergeSortTree {
 	int query(int l, int r, T x, T y) { // zero-indexed, inclusive
 		int ans = 0;
 		for (l += N, r += N+1; l < r; l /= 2, r /= 2) {
-			if (l & 1) ans += op(seg[l++], x, y);
-			if (r & 1) ans += op(seg[--r], x, y);
+			if (l&1) ans += op(seg[l++], x, y);
+			if (r&1) ans += op(seg[--r], x, y);
 		}
 		return ans;
 	}

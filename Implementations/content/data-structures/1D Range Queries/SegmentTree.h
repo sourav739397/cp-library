@@ -22,8 +22,8 @@ template<class T> struct SegmentTree {
 	T query(int l, int r) { // zero-indexed, inclusive
 		T lf = ID, rf = ID;
 		for (l += N, r += N+1; l < r; l /= 2, r /= 2) {
-			if (l & 1) lf = cmb(lf, seg[l++]);
-			if (r & 1) rf = cmb(seg[--r], rf);
+			if (l&1) lf = cmb(lf, seg[l++]);
+			if (r&1) rf = cmb(seg[--r], rf);
 		}
 		return cmb(lf, rf);
 	}
