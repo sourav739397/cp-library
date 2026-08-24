@@ -4,7 +4,7 @@
  * Source: Benq
  * Time: O(N \log N)
  * Verification: https://cses.fi/problemset/task/1145/
- */
+*/
 
 template<class T> void compress(vector<T>& v) {
 	ranges::sort(v);

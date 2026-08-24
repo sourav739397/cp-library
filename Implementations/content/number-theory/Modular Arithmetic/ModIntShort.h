@@ -20,11 +20,8 @@ struct mint {
 		v = int((int64_t)v*o.v % MOD);
 		return *this; }
 	friend mint pow(mint o, int64_t p) {
-		mint ans = 1;
-		for (; p; p /= 2, o *= o) if (p&1) ans *= o;
-		return ans; }
-	friend mint inv(mint o) {
-		return pow(o, MOD - 2); }
+		return p==0?1:pow(a*a,p/2)*(p&1?a:1); }
+	friend mint inv(mint o) { return pow(o, MOD - 2); }
 	friend mint operator+(mint a, const mint& b) { return a += b; }
 	friend mint operator-(mint a, const mint& b) { return a -= b; }
 	friend mint operator*(mint a, const mint& b) { return a *= b; }

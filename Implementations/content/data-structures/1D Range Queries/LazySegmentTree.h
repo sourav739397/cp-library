@@ -22,7 +22,10 @@ template<class T>struct LazySegmentTree {
 		lazy[ind] = 0;
 	}
 	void pull(int ind) { seg[ind] = cmb(seg[2*ind], seg[2*ind+1]); }
-	void build() { for (int i = N-1; i >= 1; --i) pull(i); }
+	void build(const vector<T>& v) {
+		for (int i = 0; i < size(v); i++) seg[i+N] = v[i];
+		for (int i = N-1; i >= 1; --i) pull(i);
+	}
 	void update(int lo, int hi, T inc, int ind, int L, int R) {
 		push(ind, L, R);
 		if (hi < L || R < lo) return;
