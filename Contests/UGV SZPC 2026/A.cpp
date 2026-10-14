@@ -20,7 +20,6 @@ void solve() {
 int32_t main() {
 	cin.tie(0)->sync_with_stdio(0);
 
-
 	int Q; cin >> Q;
 	while (Q--) { solve(); }
 }
