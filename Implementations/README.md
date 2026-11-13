@@ -2,15 +2,15 @@ This directory contains the source code and build configuration for generating t
 
 The notebook is a concise collection of reusable, copy-paste-ready C++ implementations of algorithms and data structures, designed for ICPC-style programming competitions.
 
-## Build Your Notebook
+# Build Your Notebook
 
-### Requirements
+## Requirements
 
 - A working LaTeX distribution with `pdflatex`.
 - Python 3.
 - GNU Make.
 
-### Quick Start
+## Quick Start
 
 Run the following commands from the `Implementations/` directory:
 
