@@ -4,38 +4,21 @@ using namespace std;
 
 #define int int64_t
 
-pair<double, double> f(int x, int y, int x_, int y_, int a, int b) {
-	if (a == 1) {
-		double ucx = b*x + a*y - y_;
-		double ucy = x_ - a*x + b*y;
-		return {ucx/b, ucy/b};
-	}
-	double ucy = (1ll-a)*y_ - (1ll-a)*(b*x + a*y) + b*x_ - a*b*x + b*b*y;
-	double dcy = (1ll-a) * (1ll-a) + b*b;
-	double cy = ucy / dcy;
-
-	double ucx = x_ - a*x + b*y - b*cy;
-	double cx = ucx / (1ll-a);
-	return {cx, cy};
+pair<int64_t, int64_t> f(int x, int y, int x_, int y_, int a, int b) {
+	// x' = ax - by + dx
+	// y' = bx + ay + dy
+	return {1ll*x_-1ll*x*a+1ll*y*b, 1ll*y_-1ll*x*b-1ll*y*a};
 }
 
 void solve() {
 	int n, a, b; cin >> n >> a >> b;
 
 	vector<int> x(n), y(n), w(n);
-	for (int i = 0; i < n; i++) {
-		cin >> x[i];
-	}
+	for (int i = 0; i < n; i++) cin >> x[i];
+	for (int i = 0; i < n; i++) cin >> y[i];
+	for (int i = 0; i < n; i++) cin >> w[i];
 
-	for (int i = 0; i < n; i++) {
-		cin >> y[i];
-	}
-
-	for (int i = 0; i < n; i++) {
-		cin >> w[i];
-	}
-
-	map<pair<double, double>, int64_t> cnt;
+	map<pair<int64_t, int64_t>, int64_t> cnt;
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			auto val = f(x[i], y[i], x[j], y[j], a, b);
