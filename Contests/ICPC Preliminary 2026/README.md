@@ -1,9 +1,5 @@
 # ICPC Asia Dhaka Regional 2026 — Online Preliminary Contest
 
-Official materials, resources, and solutions for the **ICPC Asia Dhaka Regional 2026 Online Preliminary Contest**.
-
----
-
 ## Contest Links & Resources
 
 | Resource | Link |

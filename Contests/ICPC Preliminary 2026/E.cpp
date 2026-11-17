@@ -1,12 +1,3 @@
-/**
- * Pigeonhole Principle ->
- * f(x, y) = x^3y - xy^3 = xy(x+y)(x-y)
- * if (m/2) + 1 elements are considered, then 
- *    i. x == 0 (mod m) || y == 0 (mod m)
- *   ii. x+y == 0 (mod m)
- *  iii. x-y == 0 (mod m)
- */
-
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -36,7 +27,12 @@ void solve() {
 
 	while (q--) {
 		int l, r, m; cin >> l >> r >> m;
-		l--, r--; r = min(r, l+m/2+1);
+		l--, r--;
+		// f(x, y) = x^3y - xy^3 = xy(x+y)(x-y)
+		// by Pigeonhole Principle,
+		// if there is a valid pair
+		// it's enough to check just m/2+1 element
+		r = min(r, l+m/2);
 		qq(l, r, m);
 	}
 }
